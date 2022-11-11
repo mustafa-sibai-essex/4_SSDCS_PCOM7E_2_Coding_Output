@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{% static 'base.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <title>NCTTS - Report a Vulnerability</title>
+</head>
+<body>
+    <h1 class="p-3 mb-2 bg-secondary text-white">Report a Vulnerability</h1>
+    <div class="pad-text">
+        <div class="border border-info pad-text">
+            <p>Found a vulnerability on a government website? You can report it here by filling the form below. We will do our
+            best to review and fix the vulnerability within 60 days, however in some cases the process can take more.</p>
+            <p>Please note that you do not need to share any personal information with us, but if you like to track the status
+            of the vulnerability that you reported, you are welcome to share you contact information.</p>
+            <p>Thank you very much for your cooperation!</p>
+        </div>
+    </div>
+    <div class="pad-top centered">
+         <h3>Submission form</h3>
+    </div>
+    <div class="pad-text">
+        <div class="p-5 border">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="fname">First Name (Optional):</label>
+                  <input type="text" class="form-control" id="fname" placeholder="First name">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="lname">Last Name (Optional):</label>
+                  <input type="text" class="form-control" id="lname" placeholder="Last name">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="email">Email Address (Optional):</label>
+                  <input type="email" class="form-control" id="email" placeholder="Email Address, e.g. john.doe@acme.com">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="vweb">Vulnerable website link:</label>
+                  <input type="url" class="form-control" id="vweb" placeholder="Vulnerable website link, e.g. https://www.acme.com" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="dtg">The date and time the incident occurred:</label>
+                    <input type="datetime-local" class="form-control" id="dtg" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="vdesc">Description of vulnerability:</label>
+                <input type="text" class="form-control" id="vdesc" placeholder="Describe the vulnerability" required>
+              </div>
+              <div class="form-group">
+                <label for="vrep">How to replicate the vulnerability:</label>
+                <input type="text" class="form-control" id="vrep" placeholder="Give us more information about how to replicate the vulnerability." required>
+              </div>
+              <div class="form-group">
+                <label for="expcode">Exploit code (if available):</label>
+                <input type="text" class="form-control" id="expcode" placeholder="If available, share the exploit code.">
+              </div>
+              <div class="form-group">
+                <label for="pfix">Potential fix for the issue (Optional):</label>
+                <input type="text" class="form-control" id="pfix" placeholder="Potential fix for the issue.">
+              </div>
+              <div class="form-group">
+                <label for="vlink">Link to video replicating the problem (Optional):</label>
+                <input type="url" class="form-control" id="vlink" placeholder="Please share the link here.">
+              </div>
+              <div class="centered pad-top">
+                <button type="submit" class="btn btn-primary" formaction="/report/success">Submit</button>
+              </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
