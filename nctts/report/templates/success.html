@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{% static 'base.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <title>NCTTS - Vulnerability report has been submitted successfully!</title>
+</head>
+<body>
+  <div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Thank you!</h4>
+  <p>The vulnerability report has been submitted. We will review and try to fix the vulnerability within 60 days. Once we fixed the vulnerability, detailed information will be published on our website.</p>
+  <hr>
+  <p class="mb-0">If you shared your contact details, we will let you know about the status of the vulnerability.</p>
+  </div>
+  <div class="pad-top centered">
+      <a href="/report" target="_self"><button type="button" class="btn btn-secondary">Back to the homepage</button>
+  </div>
+</body>
+</html>
