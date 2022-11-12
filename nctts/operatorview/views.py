@@ -4,4 +4,4 @@ from django.shortcuts import render
 # Create your views here.
 
 def ManageRep(request):
-    return HttpResponse("Test")
+    return render(request, "operatorview/managereport.html")
