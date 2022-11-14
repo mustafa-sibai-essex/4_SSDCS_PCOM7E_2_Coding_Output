@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class PublicUser(models.Model):
     user_no =  models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=50)
