@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "report",
     "homepage.apps.HomepageConfig",
+    "operatorview",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
