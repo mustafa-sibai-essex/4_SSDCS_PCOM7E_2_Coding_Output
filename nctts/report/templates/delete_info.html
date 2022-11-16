@@ -20,26 +20,27 @@
     </div>
     <div class="pad-text">
         <div class="p-5 border">
-            <form>
+            <form action="/report/delete_info" method="POST">
+                {%  csrf_token %}
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="fname">First Name:</label>
-                  <input type="text" class="form-control" id="fname" placeholder="First name" required>
+                  <input type="text" class="form-control" id="fname" name="fname" placeholder="First name" required>
                 </div>
                 <div class="form-group col-md-6">
                   <label for="lname">Last Name:</label>
-                  <input type="text" class="form-control" id="lname" placeholder="Last name" required>
+                  <input type="text" class="form-control" id="lname" name="lname" placeholder="Last name" required>
                 </div>
                 <div class="form-group col-md-6">
                   <label for="email">Email Address:</label>
-                  <input type="email" class="form-control" id="email" placeholder="Email Address, e.g. john.doe@acme.com" required>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Email Address, e.g. john.doe@acme.com" required>
                 </div>
                 <div class="form-group">
                     <label for="comments">Comments (if any): </label>
-                    <input type="text" class="form-control" id="comments" placeholder="Share your thoughts here">
+                    <input type="text" class="form-control" id="comments" name="comments" placeholder="Share your thoughts here">
                 </div>
               <div class="centered pad-top">
-                <button type="submit" class="btn btn-primary" formaction="/report/delete_success">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </form>
         </div>

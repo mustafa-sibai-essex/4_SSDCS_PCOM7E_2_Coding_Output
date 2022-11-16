@@ -1,6 +1,8 @@
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from . import models
+
 
 # Create your views here.
 
@@ -16,10 +18,11 @@ def report(request):
         exploit_code = request.POST['expcode']
         potential_fix = request.POST['pfix']
         video = request.POST['vlink']
-        ins1 = models.PublicUser(first_name=first_name, last_name=last_name, email=email)
-        ins2 = models.Vulnerability(vulnerable_website=vulnerable_website, date_time=date_time, description=description, replicate=replicate, exploit_code=exploit_code, potential_fix=potential_fix, video=video, reported_by=email)
-        ins1.save()
-        ins2.save()
+        ins = models.Vulnerabilities(first_name=first_name, last_name=last_name, email=email,
+                                     vulnerable_website=vulnerable_website, date_time=date_time,
+                                     description=description, replicate=replicate, exploit_code=exploit_code,
+                                     potential_fix=potential_fix, video=video)
+        ins.save()
         return redirect("/report/success")
 
     else:
@@ -31,7 +34,21 @@ def success(request):
 
 
 def delete_info(request):
-    return render(request, "delete_info.html")
+    if request.method == "POST":
+        email = request.POST['email']
+        description = request.POST['comments']
+        try:
+            record = models.Vulnerabilities.objects.get(email=email)
+            record.first_name = "Anonymous"  # When user leaves these fields empty, we have "Anonymous", "User" and "No email".
+            record.last_name = "User"  # Hence, when we delete user's contact information, we revert back to the default.
+            record.email = "No email"
+            record.description = description
+            record.save()
+        except ObjectDoesNotExist:
+            return redirect("/report/delete_error")
+        return redirect("/report/delete_success")
+    else:
+        return render(request, "delete_info.html")
 
 
 def delete_success(request):
@@ -40,3 +57,7 @@ def delete_success(request):
 
 def view_vulnerabilities(request):
     return render(request, "view_vulnerabilities.html")
+
+
+def delete_error(request):
+    return render(request, "delete_error.html")
