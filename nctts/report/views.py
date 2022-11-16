@@ -1,5 +1,4 @@
-from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponse
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.shortcuts import render, redirect
 from . import models
 
@@ -18,11 +17,18 @@ def report(request):
         exploit_code = request.POST['expcode']
         potential_fix = request.POST['pfix']
         video = request.POST['vlink']
-        ins = models.Vulnerabilities(first_name=first_name, last_name=last_name, email=email,
-                                     vulnerable_website=vulnerable_website, date_time=date_time,
-                                     description=description, replicate=replicate, exploit_code=exploit_code,
-                                     potential_fix=potential_fix, video=video)
-        ins.save()
+
+        # Checking for duplicates - we do not save duplicate users, but save the vulnerability only
+        try:
+            duplicate_check = models.PublicUser.objects.get(email=email)
+            ins_user = models.PublicUser(first_name=first_name, last_name=last_name, email=email)
+            ins_user.save()
+        except MultipleObjectsReturned:
+            user_id = models.PublicUser.objects.filter(email=email).first() # Getting user_id (foreign key)
+            ins_vulnerability = models.Vulnerabilities(reported_by=user_id, vulnerable_website=vulnerable_website, date_time=date_time,
+                                         description=description, replicate=replicate, exploit_code=exploit_code,
+                                         potential_fix=potential_fix, video=video)
+            ins_vulnerability.save()
         return redirect("/report/success")
 
     else:
