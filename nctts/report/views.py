@@ -21,14 +21,19 @@ def report(request):
         # Checking for duplicates - we do not save duplicate users, but save the vulnerability only
         try:
             duplicate_check = models.PublicUser.objects.get(email=email)
+        except ObjectDoesNotExist:
             ins_user = models.PublicUser(first_name=first_name, last_name=last_name, email=email)
             ins_user.save()
         except MultipleObjectsReturned:
-            user_id = models.PublicUser.objects.filter(email=email).first() # Getting user_id (foreign key)
-            ins_vulnerability = models.Vulnerabilities(reported_by=user_id, vulnerable_website=vulnerable_website, date_time=date_time,
-                                         description=description, replicate=replicate, exploit_code=exploit_code,
-                                         potential_fix=potential_fix, video=video)
-            ins_vulnerability.save()
+            pass  # we do not have to anything
+
+        user_id = models.PublicUser.objects.filter(email=email).first()  # Getting user_id (foreign key)
+        ins_vulnerability = models.Vulnerabilities(reported_by=user_id, vulnerable_website=vulnerable_website,
+                                                   date_time=date_time,
+                                                   description=description, replicate=replicate,
+                                                   exploit_code=exploit_code,
+                                                   potential_fix=potential_fix, video=video)
+        ins_vulnerability.save()
         return redirect("/report/success")
 
     else:
@@ -42,13 +47,13 @@ def success(request):
 def delete_info(request):
     if request.method == "POST":
         email = request.POST['email']
-        description = request.POST['comments']
+        remarks = request.POST['comments']
         try:
-            record = models.Vulnerabilities.objects.get(email=email)
+            record = models.PublicUser.objects.get(email=email)
             record.first_name = "Anonymous"  # When user leaves these fields empty, we have "Anonymous", "User" and "No email".
             record.last_name = "User"  # Hence, when we delete user's contact information, we revert back to the default.
             record.email = "No email"
-            record.description = description
+            record.remarks = remarks
             record.save()
         except ObjectDoesNotExist:
             return redirect("/report/delete_error")
@@ -62,7 +67,8 @@ def delete_success(request):
 
 
 def view_vulnerabilities(request):
-    return render(request, "view_vulnerabilities.html")
+    vulnerabilities = models.Vulnerabilities.objects.all()
+    return render(request, "view_vulnerabilities.html", {'vulnerabilities': vulnerabilities})
 
 
 def delete_error(request):
