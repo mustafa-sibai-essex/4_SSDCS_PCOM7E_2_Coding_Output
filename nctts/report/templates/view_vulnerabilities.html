@@ -1,59 +1,30 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="{% static 'base.css' %}">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<head>
-    <meta charset="UTF-8">
-    <title>NCTTS - Verified vulnerabilities</title>
-</head>
-<body>
-    <h1 class="p-3 mb-2 bg-secondary text-white">Verified vulnerabilities</h1>
-    <div class="pad-text">
-        <div class="border border-info pad-text centered">
-            <p>Here are vulnerabilities that are verified by our team so far:</p>
-        </div>
-    </div>
-    <div class="pad-top centered">
-         <h3>Verified vulnerabilities</h3>
-    </div>
+{% extends 'layout.html' %}
+
+{%  block content %}
     <div class="pad-text">
         <div class="p-5 border">
           <table class="table table-striped">
               <thead>
                 <tr>
                   <th scope="col" style="width:60px">#</th>
-                  <th scope="col" style="width:200px">Vulnerability</th>
+                  <th scope="col" style="width:250px">Vulnerable Website</th>
+                  <th scope="col" style="width:250px">Date and time reported</th>
                   <th scope="col">Description</th>
-                  <th scope="col" style="width:200px">Date and time reported</th>
-                  <th scope="col">Remarks</th>
                 </tr>
               </thead>
               <tbody>
+              {% for vulnerability in vulnerabilities %}
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Broken Authentication</td>
-                  <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
-                  <td>10/10/2022 11:10 GMT</td>
-                  <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </td>
+                  <th scope="row">{{ vulnerability.vul_no }}</th>
+                  <td>{{ vulnerability.vulnerable_website }}</td>
+                  <td>{{ vulnerability.date_time }}</td>
+                  <td>{{ vulnerability.description }}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Cross-Site Scripting (XSS)</td>
-                  <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
-                  <td>18/10/2022 21:30 GMT</td>
-                  <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Sensitive data exposure</td>
-                  <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
-                  <td>10/11/2022 09:05 GMT</td>
-                  <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </td>
-                </tr>
+              {% endfor %}
               </tbody>
           </table>
         </div>
     </div>
-</body>
-</html>
+
+
+{%  endblock %}

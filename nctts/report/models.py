@@ -6,6 +6,7 @@ class PublicUser(models.Model):
     first_name = models.CharField(max_length=50, default="Anonymous")
     last_name = models.CharField(max_length=50, default="User")
     email = models.EmailField(max_length=100, default="No email")
+    remarks = models.TextField(blank=True, max_length=1000)
 
 
 class Vulnerabilities(models.Model):
@@ -18,4 +19,3 @@ class Vulnerabilities(models.Model):
     exploit_code = models.TextField(blank=True, max_length=2000)
     potential_fix = models.TextField(blank=True, max_length=1000)
     video = models.URLField(blank=True, max_length=200)
-    description = models.TextField(blank=True, max_length=2000)
