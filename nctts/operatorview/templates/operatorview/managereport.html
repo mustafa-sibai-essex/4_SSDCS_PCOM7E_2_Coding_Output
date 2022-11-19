@@ -8,13 +8,41 @@
     </head>
     <body>
         <h1>Manage Reports</h1>
+        <div>
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Vulnerabilities</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    Awaiting approval
+                </td>
+                <td> 
+                    {{countAA}}                       
+                </td>
+                <td><a href="{% url 'Awaiting' %}">View all</a></td>                
+            </tr>           
+            <tr>
+                <td>
+                    Escalated
+                </td>
+                <td>    
+                    {{countEs}}                    
+                </td>
+                <td><a href="{% url 'Escalated' %}">View all</a></td>
+            </tr>    
+        </div>    
+        <div>            
         <table>
             <tr>
                 <th>Reference</th>
                 <th>Status</th>
-                <th>Description</th>
                 <th>Assigned to</th>
-                <th>Date of Event</th>
+                <th>Creation Date</th>
+                <th>Description</th>
+                <th></th>
                 <th></th>
             </tr>
             {% for vulnerability in vulnerabilities %}
@@ -29,15 +57,22 @@
                     {{vulnerability.assigned_to}}
                 </td>
                 <td>
+                    {{vulnerability.date_created}}
+                </td>
+                <td>
                     {{vulnerability.description}}
                 </td>
                 <td>
-                    {{vulnerability.date_time}}
+                    <a href="{% url 'Update' vulnerability.pk %}">More Info/ Update</a>
                 </td>
                 <td>
-                    <a href="{% url 'vulnerability' vulnerability.vul_no %}">More details</a>
+                    <a href= "{% url 'Delete' vulnerability.pk %}">Delete</a>
                 </td>
             </tr>           
             {% endfor %}
+        </div>
+            <div>
+                <a href="{% url 'AddNew' %}">Add New Vulnerability</a>
+            </div>    
     </body>
 </html>

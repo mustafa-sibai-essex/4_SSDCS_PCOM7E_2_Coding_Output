@@ -8,6 +8,9 @@ class PublicUser(models.Model):
     last_name = models.CharField(max_length=50, default="User")
     email = models.EmailField(max_length=100, default="No email")
 
+    def __str__(self):
+        return ("User reference - " + str(self.user_no))
+
 
 class VulnerabilitiesOP(models.Model):
     AwaitingApproval = 'Awaiting Approval'
@@ -28,6 +31,7 @@ class VulnerabilitiesOP(models.Model):
     Int = 'Interior and Kingdom relations'
     Justice = 'Justice and Security'
     Soc = 'Social Affairs and Employment'
+    Esc = 'Escalation Team'
 
     Status_choices = [
         (AwaitingApproval, 'Awaiting approval'),
@@ -51,6 +55,7 @@ class VulnerabilitiesOP(models.Model):
         (Int, 'Interior and Kingdom relations'),
         (Justice, 'Justice and Security'),
         (Soc, 'Social Affairs and Employment'),
+        (Esc, 'Escalation Team'),
     ]
 
     vul_no = models.AutoField(primary_key=True)
@@ -64,5 +69,6 @@ class VulnerabilitiesOP(models.Model):
     exploit_code = models.TextField(blank=True, max_length=2000)
     potential_fix = models.TextField(blank=True, max_length=1000)
     video = models.URLField(blank=True, max_length=200)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
 
 
