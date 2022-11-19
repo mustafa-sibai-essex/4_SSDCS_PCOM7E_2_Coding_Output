@@ -8,5 +8,36 @@
     </head>
     <body>
         <h1>Manage Reports</h1>
+        <table>
+            <tr>
+                <th>Reference</th>
+                <th>Status</th>
+                <th>Description</th>
+                <th>Assigned to</th>
+                <th>Date of Event</th>
+                <th></th>
+            </tr>
+            {% for vulnerability in vulnerabilities %}
+            <tr>
+                <td>
+                    {{vulnerability.vul_no}}
+                </td>
+                <td>
+                    {{vulnerability.status}}
+                </td>
+                <td>
+                    {{vulnerability.assigned_to}}
+                </td>
+                <td>
+                    {{vulnerability.description}}
+                </td>
+                <td>
+                    {{vulnerability.date_time}}
+                </td>
+                <td>
+                    <a href="{% url 'vulnerability' vulnerability.vul_no %}">More details</a>
+                </td>
+            </tr>           
+            {% endfor %}
     </body>
 </html>
