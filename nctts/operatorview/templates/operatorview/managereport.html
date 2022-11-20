@@ -74,5 +74,17 @@
                 <a href="{% url 'AddNew' %}">Add New Vulnerability</a>
             <h3>    
             </div>
+            <div>
+                <form action="{% url 'searchresults' %}" class="form-inline" method="get">
+                    <label for="" class="sr-only">search</label>
+                    <input name="search" type="" class="form-control" id="" placeholder="Status or Department">
+                    <button type="submit" class="btn btn-success btn-lg mb-2">Search Department/Status</button>
+                </form>
+                <form action="{% url 'searchreference' %}" class="form-inline" method="get">
+                    <label for="" class="sr-only">search</label>
+                    <input name="search" type="" class="form-control" id="" placeholder="Reference Number">
+                    <button type="submit" class="btn btn-success btn-lg mb-2">Search Reference No.</button>
+                </form>
+            </div>
         </body>
 </html>

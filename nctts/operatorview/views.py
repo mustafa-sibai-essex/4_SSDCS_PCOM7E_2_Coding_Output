@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import VulnerabilitiesOP
 from.forms import CreateNewVuln
+from django.db.models import Q
 
 
 # Create your views here.
@@ -48,3 +49,17 @@ def Awaiting(request):
 
 def Escalated(request):
     return render(request, "operatorview/escalate.html", {"vulnerabilities": VulnerabilitiesOP.objects.filter(status="Escalated")})
+
+def searchresults(request):
+    vulnerabilities = []
+    if request.method == 'GET':
+        query = request.GET.get(str('search'))
+        vulnerabilities = VulnerabilitiesOP.objects.filter(Q(status=query) | Q(assigned_to=query))
+    return render(request, "operatorview/searchresults.html", {'query':query, 'vulnerabilities':vulnerabilities})
+
+def searchreference(request):
+    vulnerabilities = []
+    if request.method == 'GET':
+        query = request.GET.get('search')
+        vulnerabilities = VulnerabilitiesOP.objects.filter(vul_no=query)
+    return render(request, "operatorview/searchresults.html", {'query':query, 'vulnerabilities':vulnerabilities})
