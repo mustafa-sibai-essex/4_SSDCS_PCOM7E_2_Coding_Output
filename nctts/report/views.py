@@ -67,7 +67,7 @@ def delete_success(request):
 
 
 def view_vulnerabilities(request):
-    vulnerabilities = models.Vulnerabilities.objects.all()
+    vulnerabilities = models.Vulnerabilities.objects.filter(status="Fixed")
     return render(request, "view_vulnerabilities.html", {'vulnerabilities': vulnerabilities})
 
 

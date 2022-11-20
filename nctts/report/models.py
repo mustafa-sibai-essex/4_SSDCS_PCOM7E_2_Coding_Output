@@ -11,6 +11,7 @@ class PublicUser(models.Model):
 
 class Vulnerabilities(models.Model):
     vul_no = models.AutoField(primary_key=True)
+    status = models.TextField(default="Not verified")
     reported_by = models.ForeignKey(PublicUser, on_delete=models.DO_NOTHING, null=True)
     vulnerable_website = models.URLField(max_length=200)
     date_time = models.DateTimeField(max_length=50)
