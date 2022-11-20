@@ -33,7 +33,7 @@
                 </td>
                 <td><a href="{% url 'Escalated' %}">View all</a></td>
             </tr>    
-        </div>    
+        </div>
         <div style='margin-top:30px;'>            
         <table>
             <tr>
@@ -70,20 +70,20 @@
                 </td>
             </tr>           
             {% endfor %}
+        </div>
+            <div>
             <h3>
                 <a href="{% url 'AddNew' %}">Add New Vulnerability</a>
             <h3>    
-            </div>
-            <div>
                 <form action="{% url 'searchresults' %}" class="form-inline" method="get">
-                    <label for="" class="sr-only">search</label>
+                    <label for="" class="sr-only">Search Department or Status</label>
                     <input name="search" type="" class="form-control" id="" placeholder="Status or Department">
-                    <button type="submit" class="btn btn-success btn-lg mb-2">Search Department/Status</button>
+                    <button type="submit" class="btn btn-success btn-lg mb-2">Search</button>
                 </form>
                 <form action="{% url 'searchreference' %}" class="form-inline" method="get">
-                    <label for="" class="sr-only">search</label>
+                    <label for="" class="sr-only">Reference number</label>
                     <input name="search" type="" class="form-control" id="" placeholder="Reference Number">
-                    <button type="submit" class="btn btn-success btn-lg mb-2">Search Reference No.</button>
+                    <button type="submit" class="btn btn-success btn-lg mb-2">Search</button>
                 </form>
             </div>
         </body>
