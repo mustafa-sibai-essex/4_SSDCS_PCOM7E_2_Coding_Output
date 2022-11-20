@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "homepage.apps.HomepageConfig",
     "operatorview",
     "gov",
+    "sendEmail",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -121,6 +122,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+DEFAULT_FROM_EMAIL = 'coderfreak7@gmail.com'
+EMAIL_HOST_USER = 'coderfreak7@gmail.com'
+EMAIL_HOST_PASSWORD = 'tfhufvqrejmgbhmx'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static/')
