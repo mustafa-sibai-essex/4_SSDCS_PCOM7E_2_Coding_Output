@@ -1,9 +1,9 @@
 from django.forms import ModelForm
 from django import forms
-from .models import VulnerabilitiesOP
+from report.models import Vulnerabilities
 
 class CreateNewVuln(ModelForm):
     class Meta:
-        model = VulnerabilitiesOP
+        model = Vulnerabilities
         fields = '__all__'
 
