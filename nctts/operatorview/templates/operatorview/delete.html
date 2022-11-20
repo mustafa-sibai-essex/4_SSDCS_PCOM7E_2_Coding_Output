@@ -1,0 +1,7 @@
+<p>This record will be permanantly deleted. Are you sure?</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <a href="{% url 'ManageReports' %}">Cancel</a>
+    <input type = "submit" name="Confirm" value="Confirm">
+</form>

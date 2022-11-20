@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>NCTTS - Manage Reports</title>
+        <link href="{% static 'styles.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Awaiting Approval</h1>
+        <div>            
+        <table>
+            <tr>
+                <th>Reference</th>
+                <th>Status</th>
+                <th>Assigned to</th>
+                <th>Description</th>
+                <th>Creation Date</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for vulnerability in vulnerabilities %}
+            <tr>
+                <td>
+                    {{vulnerability.vul_no}}
+                </td>
+                <td>
+                    {{vulnerability.status}}
+                </td>
+                <td>
+                    {{vulnerability.assigned_to}}
+                </td>
+                <td>
+                    {{vulnerability.description}}
+                </td>
+                <td>
+                    {{vulnerability.date_created}}
+                </td>
+                <td>
+                    <a href="{% url 'vulnerability' vulnerability.vul_no %}">More Info</a>
+                </td>
+                <td>
+                    <a href=>Update</a>
+                </td>
+            </tr>           
+            {% endfor %}
+        </div>
+        <a href="{% url 'ManageReports' %}">Return to Manage reports</a>
+    </body>
+</html>

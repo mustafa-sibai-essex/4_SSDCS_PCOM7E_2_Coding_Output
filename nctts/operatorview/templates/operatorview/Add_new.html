@@ -1,0 +1,18 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>NCTTS - Add new</title>
+        <link href="{% static 'styles.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Add new Vulnerability Record</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit", name="Submit">Save</button>
+        </form>
+        <a href="{% url 'ManageReports' %}">Return to Manage reports</a>
+    </body>
+</html>

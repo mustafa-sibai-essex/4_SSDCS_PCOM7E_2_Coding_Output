@@ -8,5 +8,83 @@
     </head>
     <body>
         <h1>Manage Reports</h1>
-    </body>
+        <div>
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Vulnerabilities</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    Awaiting approval
+                </td>
+                <td> 
+                    {{countAA}}                       
+                </td>
+                <td><a href="{% url 'Awaiting' %}">View all</a></td>                
+            </tr>           
+            <tr>
+                <td>
+                    Escalated
+                </td>
+                <td>    
+                    {{countEs}}                    
+                </td>
+                <td><a href="{% url 'Escalated' %}">View all</a></td>
+            </tr>    
+        </div>
+        <div style='margin-top:30px;'>            
+        <table>
+            <tr>
+                <th>Reference</th>
+                <th>Status</th>
+                <th>Assigned to</th>
+                <th>Creation Date</th>
+                <th>Description</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for vulnerability in vulnerabilities %}
+            <tr>
+                <td>
+                    {{vulnerability.vul_no}}
+                </td>
+                <td>
+                    {{vulnerability.status}}
+                </td>
+                <td>
+                    {{vulnerability.assigned_to}}
+                </td>
+                <td>
+                    {{vulnerability.date_created}}
+                </td>
+                <td>
+                    {{vulnerability.description}}
+                </td>
+                <td>
+                    <a href="{% url 'Update' vulnerability.pk %}">More Info/ Update</a>
+                </td>
+                <td>
+                    <a href= "{% url 'Delete' vulnerability.pk %}">Delete</a>
+                </td>
+            </tr>           
+            {% endfor %}
+        </div>
+            <div>
+            <h3>
+                <a href="{% url 'AddNew' %}">Add New Vulnerability</a>
+            <h3>    
+                <form action="{% url 'searchresults' %}" class="form-inline" method="get">
+                    <label for="" class="sr-only">Search Department or Status</label>
+                    <input name="search" type="" class="form-control" id="" placeholder="Status or Department">
+                    <button type="submit" class="btn btn-success btn-lg mb-2">Search</button>
+                </form>
+                <form action="{% url 'searchreference' %}" class="form-inline" method="get">
+                    <label for="" class="sr-only">Reference number</label>
+                    <input name="search" type="" class="form-control" id="" placeholder="Reference Number">
+                    <button type="submit" class="btn btn-success btn-lg mb-2">Search</button>
+                </form>
+            </div>
+        </body>
 </html>
