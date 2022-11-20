@@ -21,6 +21,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("report/", include("report.urls"), name='report'),
     path("", include('homepage.urls')),
+    path("gov/", include("gov.urls")),
+    path("gov/", include("django.contrib.auth.urls")),
     #path("lol/", views.LOLView.as_view()),
     path('operatorview/', include("operatorview.urls"))
 ]
