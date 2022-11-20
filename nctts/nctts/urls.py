@@ -18,11 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("admin/", admin.site.urls, name='admin'),
     path("sendEmail/", include("sendEmail.urls")),
     path("report/", include("report.urls"), name='report'),
     path("", include('homepage.urls')),
-    path("gov/", include("gov.urls")),
+    path("gov/", include("gov.urls"), name='gov-login'),
     path("gov/", include("django.contrib.auth.urls")),
     #path("lol/", views.LOLView.as_view()),
     path('operatorview/', include("operatorview.urls"))
