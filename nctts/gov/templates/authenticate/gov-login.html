@@ -1,23 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form aution="" method="POST">
-        {% csrf_token %}
-        <div class="mb-3">
-          <label for="exampleInputUsername1" class="form-label">Username</label>
-          <input type="username" class="form-control" name="username" aria-describedby="usernameHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" name="password">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-</body>
-</html>
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" href="{% static "admin/css/login.css" %}">
+{{ form.media }}
+{% endblock %}
+
+
+{% block bodyclass %}{{ block.super }} login{% endblock %}
+
+{% block breadcrumbs %}
+
+<div class="breadcrumbs">
+  <a href="{% url 'homepage:home'%}">Home</a>
+</div>
+
+{% endblock %}
+
+{% block branding %}
+<h1 id="head">
+    <img src="{% static 'homepage/assets/img/cyberlogo.png' %}" width="35" height="35" />
+    Login
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<form action="" method="POST" id="login-form">
+  {% csrf_token %}
+  <div class="form-row">
+      <label for="id_username" class="form-label">Username:</label>
+      <input type="text" name="username" autocapitalize="none" autocomplete="username" maxlength="150" id="id_username">
+    </div>
+  <div class="form-row">
+    <label for="id_password" class="form-label">Password:</label>
+    <input type="password" name="password" autocomplete="current-password" required="" id="id_password">  
+  </div>
+  <div class="submit-row">
+    <input type="submit" value="{% translate 'Log in' %}">
+  </div>
+</form>
+
+</div>
+{% endblock %}
