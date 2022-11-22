@@ -12,17 +12,20 @@
 
 
 {% block content %}
-<h1 style="background: #264b5d;color: var(--bs-white);font-size: 22px;padding: 20px 10px 10px 16px;">Report a Vulnerability</h1>
-<div class="alert alert-success" role="alert"><span><strong>Alert</strong> <p>Found a vulnerability on a government website? You can report it here by filling the form below. We will do our
-    best to review and fix the vulnerability within 60 days, however in some cases the process can take more.</p>
-    <p>Please note that you do not need to share any personal information with us, but if you like to track the status
-    of the vulnerability that you reported, you are welcome to share you contact information.</p>
-    <p>Thank you very much for your cooperation!</p></span></div>
+    <h1 style="background: #264b5d;color: var(--bs-white);font-size: 23px;padding: 20px 10px 10px 16px;margin-bottom: 0rem;"> <div class="container">Report a Vulnerability</div></h1>
+    <div class="alert alert-success" role="alert"><div class="container"><strong>Alert</strong> <p>Found a vulnerability on a government website? You can report it here by filling the form below. We will do our
+        best to review and fix the vulnerability within 60 days, however in some cases the process can take more.</p>
+        <p>Please note that you do not need to share any personal information with us, but if you like to track the status
+        of the vulnerability that you reported, you are welcome to share you contact information.</p>
+        <p>Thank you very much for your cooperation!</p></div></div>
+
     <section class="position-relative py-4 py-xl-5">
       <div class="container position-relative">
           <div class="row mb-5">
               <div class="col" style="margin-bottom: -48px;">
-                  <h2 style="text-align: left;padding-bottom: 0px;font-size: 20px;padding-right: 0px;margin-right: 0px;">Submission form</h2>
+                <h2 style="text-align: left;padding-bottom: 0px;font-size: 23px;padding-right: 0px;margin-right: 0px;">Submission form&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-chat-right-text-fill" style="color: var(--bs-red);">
+                  <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353V2zM3.5 3h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1zm0 2.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1zm0 2.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z"></path>
+              </svg></h2>
               </div>
           </div>
           <div class="row d-flex justify-content-center">
@@ -50,45 +53,43 @@
             <label class="form-label" for="vlink">Link to video replicating the problem (Optional):</label>
             <div class="mb-3"><input type="url" class="form-control" id="vlink" name="vlink" placeholder="Please share the link here."></div>
             <div><button class="btn btn-primary d-block w-100" type="submit">Submit</button></div>
-        </form>
-        </div>
+              </form>
+                </div>
                 <div class="col-md-6 col-lg-5 col-xl-4">
-                    <div class="d-flex flex-column justify-content-center align-items-start h-100">
-                        <div class="d-flex align-items-center p-3">
-                            <div class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-caret-right-fill" style="color: var(--bs-red);">
-                                    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"></path>
-                                </svg></div>
-                            <div class="px-2">
-                                <h6 class="mb-0">Phone</h6>
-                                <p class="mb-0">+123456789</p>
-                            </div>
+                    <div class="d-flex align-items-center p-3">
+                        <div class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-question-circle-fill" style="color: var(--bs-red);">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"></path>
+                        </svg></div>
+                        <div class="px-2">
+                            <h6 class="mb-0">Help</h6>
+                            <p class="mb-0">If you need help by filling out the form, please contact us</p>
                         </div>
-                        <div class="d-flex align-items-center p-3">
-                            <div class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-telephone-fill" style="color: var(--bs-red);">
-                                    <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"></path>
-                                </svg></div>
-                            <div class="px-2">
-                                <h6 class="mb-0">Phone</h6>
-                                <p class="mb-0">+123456789</p>
-                            </div>
+                    </div>
+                    <div class="d-flex align-items-center p-3">
+                        <div class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-telephone-fill" style="color: var(--bs-red);">
+                                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"></path>
+                            </svg></div>
+                        <div class="px-2">
+                            <h6 class="mb-0">Phone</h6>
+                            <p class="mb-0">+123456789</p>
                         </div>
-                        <div class="d-flex align-items-center p-3">
-                            <div class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-envelope-open-fill" style="color: var(--bs-red);">
-                                    <path d="M8.941.435a2 2 0 0 0-1.882 0l-6 3.2A2 2 0 0 0 0 5.4v.314l6.709 3.932L8 8.928l1.291.718L16 5.714V5.4a2 2 0 0 0-1.059-1.765l-6-3.2ZM16 6.873l-5.693 3.337L16 13.372v-6.5Zm-.059 7.611L8 10.072.059 14.484A2 2 0 0 0 2 16h12a2 2 0 0 0 1.941-1.516ZM0 13.373l5.693-3.163L0 6.873v6.5Z"></path>
-                                </svg></div>
-                            <div class="px-2">
-                                <h6 class="mb-0">Email</h6>
-                                <p class="mb-0">info@example.com</p>
-                            </div>
+                    </div>
+                    <div class="d-flex align-items-center p-3">
+                        <div class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-envelope-open-fill" style="color: var(--bs-red);">
+                                <path d="M8.941.435a2 2 0 0 0-1.882 0l-6 3.2A2 2 0 0 0 0 5.4v.314l6.709 3.932L8 8.928l1.291.718L16 5.714V5.4a2 2 0 0 0-1.059-1.765l-6-3.2ZM16 6.873l-5.693 3.337L16 13.372v-6.5Zm-.059 7.611L8 10.072.059 14.484A2 2 0 0 0 2 16h12a2 2 0 0 0 1.941-1.516ZM0 13.373l5.693-3.163L0 6.873v6.5Z"></path>
+                            </svg></div>
+                        <div class="px-2">
+                            <h6 class="mb-0">Email</h6>
+                            <p class="mb-0">info@example.com</p>
                         </div>
-                        <div class="d-flex align-items-center p-3">
-                            <div class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-pin" style="color: var(--bs-red);">
-                                    <path d="M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A5.921 5.921 0 0 1 5 6.708V2.277a2.77 2.77 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354zm1.58 1.408-.002-.001.002.001zm-.002-.001.002.001A.5.5 0 0 1 6 2v5a.5.5 0 0 1-.276.447h-.002l-.012.007-.054.03a4.922 4.922 0 0 0-.827.58c-.318.278-.585.596-.725.936h7.792c-.14-.34-.407-.658-.725-.936a4.915 4.915 0 0 0-.881-.61l-.012-.006h-.002A.5.5 0 0 1 10 7V2a.5.5 0 0 1 .295-.458 1.775 1.775 0 0 0 .351-.271c.08-.08.155-.17.214-.271H5.14c.06.1.133.191.214.271a1.78 1.78 0 0 0 .37.282z"></path>
-                                </svg></div>
-                            <div class="px-2">
-                                <h6 class="mb-0">Location</h6>
-                                <p class="mb-0">12 Example Street</p>
-                            </div>
+                    </div>
+                    <div class="d-flex align-items-center p-3">
+                        <div class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-pin" style="color: var(--bs-red);">
+                                <path d="M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A5.921 5.921 0 0 1 5 6.708V2.277a2.77 2.77 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354zm1.58 1.408-.002-.001.002.001zm-.002-.001.002.001A.5.5 0 0 1 6 2v5a.5.5 0 0 1-.276.447h-.002l-.012.007-.054.03a4.922 4.922 0 0 0-.827.58c-.318.278-.585.596-.725.936h7.792c-.14-.34-.407-.658-.725-.936a4.915 4.915 0 0 0-.881-.61l-.012-.006h-.002A.5.5 0 0 1 10 7V2a.5.5 0 0 1 .295-.458 1.775 1.775 0 0 0 .351-.271c.08-.08.155-.17.214-.271H5.14c.06.1.133.191.214.271a1.78 1.78 0 0 0 .37.282z"></path>
+                            </svg></div>
+                        <div class="px-2">
+                            <h6 class="mb-0">Location</h6>
+                            <p class="mb-0">12 Example Street</p>
                         </div>
                     </div>
                 </div>
