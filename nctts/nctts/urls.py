@@ -24,5 +24,6 @@ urlpatterns = [
     path("", include('homepage.urls')),
     path("gov/", include("gov.urls"), name='gov-login'),
     path("gov/", include("django.contrib.auth.urls")),
-    path('operatorview/', include("operatorview.urls"))
+    path('operatorview/', include("operatorview.urls")),
+    path('accounts/', include('django.contrib.auth.urls'))
 ]
