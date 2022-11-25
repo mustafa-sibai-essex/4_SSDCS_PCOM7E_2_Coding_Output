@@ -47,9 +47,6 @@ def Delete(request, vuln_id):
 def Awaiting(request):
     return render(request, "operatorview/awaiting.html", {"vulnerabilities": Vulnerabilities.objects.filter(status="Awaiting Approval")})
 
-def Escalated(request):
-    return render(request, "operatorview/escalate.html", {"vulnerabilities": Vulnerabilities.objects.filter(status="Escalated")})
-
 def searchresults(request):
     vulnerabilities = []
     if request.method == 'GET':

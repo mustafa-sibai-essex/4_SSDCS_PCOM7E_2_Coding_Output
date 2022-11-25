@@ -1,50 +1,56 @@
-{% load static %}
+{% extends 'homepage/home.html' %}{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+
+{% block title  %} NCTTS - Manage Reports{% endblock  %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'base.css' %}">
+{% endblock %}
+
+{% block nav_link_active %}
+<li class="nav-item"><a class="nav-link" href="{% url 'homepage:home'%}">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'ManageReports' %}">Manage Reports</a></li>
+<li class="nav-item"><a class="nav-link active" href="{% url 'Awaiting' %}">Awaiting Approval </a></li>
+{% endblock %}
+
+{%  block content %}
+<h1 style="background: #264b5d;color: var(--bs-white);font-size: 23px;padding: 20px 10px 10px 16px;"><div class="container">Search Result</div></h1>
     <head>
         <title>NCTTS - Manage Reports</title>
         <link href="{% static 'styles.css' %}" rel="stylesheet">
     </head>
     <body>
-        <h1>Awaiting Approval</h1>
-        <div>               
-            <table>
-                <tr>
-                    <th>Reference</th>
-                    <th>Status</th>
-                    <th>Assigned to</th>
-                    <th>Description</th>
-                    <th>Creation Date</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                {% for vulnerability in vulnerabilities %}
-                <tr>
-                    <td>
-                        {{vulnerability.vul_no}}
-                    </td>
-                    <td>
-                        {{vulnerability.status}}
-                    </td>
-                    <td>
-                        {{vulnerability.assigned_to}}
-                    </td>
-                    <td>
-                        {{vulnerability.description}}
-                    </td>
-                    <td>
-                        {{vulnerability.date_created}}
-                    </td>
-                    <td>
-                        <a href="{% url 'vulnerability' vulnerability.vul_no %}">More Info</a>
-                    </td>
-                    <td>
-                        <a href=>Update</a>
-                    </td>
-                </tr>       
-                {% endfor %}
+        <div class="pad-text">
+            <div class="p-5 border">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width:60px">Reference</th>
+                            <th scope="col" style="width:250px">Status</th>
+                            <th scope="col" style="width:250px">Assigned to</th>
+                            <th scope="col">Creation Date</th>
+                            <th scope="col">Description</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for vulnerability in vulnerabilities %}
+                        <tr>
+                            <td>{{vulnerability.vul_no}}</td>
+                            <td>{{vulnerability.status}}</td>
+                            <td>{{vulnerability.assigned_to}}</td>
+                            <td>{{vulnerability.date_created}}</td>
+                            <td>{{vulnerability.description}}</td>
+                            <td><a href="{% url 'vulnerability' vulnerability.vul_no %}">More Info</a></td>
+                        </tr>           
+                    {% endfor %}        
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <a href="{% url 'ManageReports' %}">Return to Manage reports</a>
+        <a href="{% url 'ManageReports' %}">Return</a>
     </body>
+
+{% endblock %}
 </html>
