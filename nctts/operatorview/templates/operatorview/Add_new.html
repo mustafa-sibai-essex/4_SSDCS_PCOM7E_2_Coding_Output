@@ -8,24 +8,23 @@
 {% endblock %}
 
 {% block nav_link_active %}
-<li class="nav-item"><a class="nav-link" href="{% url 'homepage:home'%}">Home</a></li>
 <li class="nav-item"><a class="nav-link" href="{% url 'ManageReports' %}">Manage Reports</a></li>
-<li class="nav-item"><a class="nav-link active" href="{% url 'Awaiting' %}">Awaiting Approval </a></li>
 {% endblock %}
 
 {%  block content %}
 <h1 style="background: #264b5d;color: var(--bs-white);font-size: 23px;padding: 20px 10px 10px 16px;"><div class="container">Create new Vulnerability Record</div></h1>
     <head>
-        <title>NCTTS - Add new</title>
         <link href="{% static 'styles.css' %}" rel="stylesheet">
     </head>
     <body>
-        <form method="POST" action="">
-            {% csrf_token %}
-            {{form.as_p}}
-            <button type="submit", name="Submit">Save</button>
-        </form>
-        <a href="{% url 'ManageReports' %}">Return</a>
+        <div class="pad-text" >
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit", name="Submit">Save</button>
+            </form>
+            <a href="{% url 'ManageReports' %}">Return</a>
+        </div>
     </body>
 
 {% endblock %}

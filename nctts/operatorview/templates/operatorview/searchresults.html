@@ -8,9 +8,7 @@
 {% endblock %}
 
 {% block nav_link_active %}
-<li class="nav-item"><a class="nav-link" href="{% url 'homepage:home'%}">Home</a></li>
 <li class="nav-item"><a class="nav-link" href="{% url 'ManageReports' %}">Manage Reports</a></li>
-<li class="nav-item"><a class="nav-link active" href="{% url 'Awaiting' %}">Awaiting Approval </a></li>
 {% endblock %}
 
 {%  block content %}
@@ -42,8 +40,10 @@
                             <td>{{vulnerability.assigned_to}}</td>
                             <td>{{vulnerability.date_created}}</td>
                             <td>{{vulnerability.description}}</td>
-                            <td><a href="{% url 'vulnerability' vulnerability.vul_no %}">More Info</a></td>
-                        </tr>           
+                            <td><a style="width:10rem; background-color:#264b5d;text-decoration: none;text-align:center;color: white;" class="btn btn-primary" href="{% url 'vulnerability' vulnerability.vul_no %}" role="button">More details</a></td>
+                        </tr>
+                    {% empty %}
+                        <tr> <h4> 0 Vulnerabilities Found </h4> </tr>            
                     {% endfor %}        
                     </tbody>
                 </table>
