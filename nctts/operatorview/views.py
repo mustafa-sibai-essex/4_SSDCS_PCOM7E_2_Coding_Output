@@ -58,5 +58,6 @@ def searchreference(request):
     vulnerabilities = []
     if request.method == 'GET':
         query = request.GET.get('search')
-        vulnerabilities = Vulnerabilities.objects.filter(vul_no=query)
+        if query != "":
+            vulnerabilities = Vulnerabilities.objects.filter(vul_no=query)
     return render(request, "operatorview/searchresults.html", {'query':query, 'vulnerabilities':vulnerabilities})
