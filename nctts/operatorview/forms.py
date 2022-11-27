@@ -2,14 +2,18 @@ from django.forms import ModelForm
 from django import forms
 from report.models import Vulnerabilities
 
+#creating the input type for the date/time input on the form (makes it easier for the user to select date and time)
 class DateTimeInput(forms.DateTimeInput):
     input_type = "datetime-local"
 
+#creating a form to be used to Add vulnerability records (while logged in as an operator)
+#ModelForm is used to create a new record in the Vulnerabilities model
 class CreateNewVuln(ModelForm):
     class Meta:
         model = Vulnerabilities
         fields = ['status', 'assigned_to', 'reported_by', 'vulnerable_website', 'date_time', 'description', 'replicate', 'exploit_code', 'potential_fix', 'video']
     
+    #changes the design of the fields for the form on the template. Allows us to change the label and apply bootstrap
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['status'].widget.attrs.update({'class':'form-control'})

@@ -7,11 +7,11 @@ from django.db.models import Q
 
 
 # Create your views here.
+#function to open the manage report view. Supplies the template with contents of vulnerability model and other required data
 @login_required
 def ManageRep(request):
     countAA= Vulnerabilities.objects.filter(status="Awaiting Approval").count
-    countEs= Vulnerabilities.objects.filter(status="Escalated").count
-    context = {'countAA':countAA, 'countEs':countEs, "vulnerabilities": Vulnerabilities.objects.all()}
+    context = {'countAA':countAA, "vulnerabilities": Vulnerabilities.objects.all()}
     return render(request, "operatorview/managereport.html", context)
 
 @login_required
