@@ -21,7 +21,7 @@
             <form method="POST" action="">
                 {% csrf_token %}
                 {{form.as_p}}
-                <button type="submit", name="Submit">Save</button>
+                <button class="btn btn-primary d-block w-100" type="submit">Submit</button>
             </form>
             <a href="{% url 'ManageReports' %}">Return</a>
         </div>
