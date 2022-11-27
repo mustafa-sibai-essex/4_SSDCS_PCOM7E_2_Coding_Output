@@ -25,7 +25,10 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'report' %}">Report Vulnerability</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'view_vulnerabilities' %}">View Vulnerabilities</a></li>
                     {% endblock %}
-                </ul><a class="btn btn-primary ms-md-2" role="button" href="{% url 'gov-login' %}">Login</a>
+                </ul>
+                {% block login %}
+                <a class="btn btn-primary ms-md-2" role="button" href="{% url 'gov-login' %}">Login</a>
+                {% endblock %}
             </div>
         </div>
     </nav>
@@ -42,7 +45,7 @@
                                 <h2 class="fw-bold text-white mb-3"><strong><span style="color: rgba(var(--bs-white-rgb),var(--bs-text-opacity)) ; background-color: RGBA(0, 0, 0,var(--bs-bg-opacity,1)) ;">NATIONAL CYBER THREAT TRACKING SYSTEM</span></strong></h2>
                                 <p class="fs-6 mb-4"><span style="background-color: rgb(0, 0, 0);">Fighting cybercrime in Netherlands</span></p>
                                 <p><span style="background-color: rgb(0, 0, 0);">Discovered a vulnerability? Click the button!</span></p>
-                                <div class="my-3"><a class="btn btn-primary btn-lg me-2" role="button" href="{% url 'report' %}">Click Here</a></div>
+                                <div class="my-3"><a class="btn btn-warning btn-lg me-2" role="button" href="{% url 'report' %}">Click here</a></div>
                             </div>
                         </div>
                         <div class="col-md-6 order-first order-md-last" style="min-height: 250px;"><img class="w-100 h-100 fit-cover" src="{% static 'homepage/assets/img/home-bg.jpg' %}"></div>

@@ -1,0 +1,20 @@
+{% extends 'registration/logged_out.html' %} {% load i18n static %}
+
+{% block breadcrumbs %}<div class="breadcrumbs"><a href="{% url 'homepage:home' %}">{% translate 'Home' %}</a></div>{% endblock %}
+
+{% block branding %}
+<h1 id="head">
+    <img src="{% static 'homepage/assets/img/cyberlogo.png' %}" width="35" height="35" />
+    NCTTS Login
+
+
+</h1>
+{% endblock %}
+
+{% block content %}
+
+<p>{% translate "Thanks for spending some quality time with the web site today." %}</p>
+
+<p><a href="{% url 'gov-login' %}">{% translate 'Log in again' %}</a></p>
+
+{% endblock %}

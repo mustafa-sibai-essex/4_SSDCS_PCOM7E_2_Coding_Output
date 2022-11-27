@@ -38,9 +38,10 @@
     <input type="password" name="password" autocomplete="current-password" required="" id="id_password">  
   </div>
   <div class="submit-row">
-    <input type="submit" value="{% translate 'Log in' %}">
+    <input type="submit" value="{% translate 'Login' %}">
   </div>
+  <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
 </form>
 
-</div>
+
 {% endblock %}

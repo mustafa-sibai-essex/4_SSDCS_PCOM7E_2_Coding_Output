@@ -1,12 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>YOU FAILED TO LOGGEDIN!</h1>
-</body>
-</html>
+{% extends 'homepage/home.html' %} {% load static %}
+
+
+
+{% block title  %} NCTTS - Login Failed{% endblock  %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'base.css' %}">
+{% endblock %}
+
+{% block nav_link_active %}
+
+{% endblock %}
+
+{% block login %}
+
+{% endblock%}
+
+{% block content %}
+  <div class="alert alert-danger" role="alert">
+    <div class="container">
+      <h4 class="alert-heading">Login Failed!</h4>
+      <p>Please double check the information you entered and try again.</p>
+    </div>
+  </div>
+  <div class="pad-top centered">
+      <a href="{% url 'gov-login' %}" target="_self"><button type="button" class="btn btn-secondary">Login again</button>
+  </div>
+{% endblock %}
