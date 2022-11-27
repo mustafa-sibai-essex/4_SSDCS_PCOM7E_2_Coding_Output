@@ -11,7 +11,7 @@ class DateTimeInput(forms.DateTimeInput):
 class CreateNewVuln(ModelForm):
     class Meta:
         model = Vulnerabilities
-        fields = ['status', 'assigned_to', 'reported_by', 'vulnerable_website', 'date_time', 'description', 'replicate', 'exploit_code', 'potential_fix', 'video']
+        fields = ['status', 'assigned_to', 'vulnerable_website', 'date_time', 'description', 'replicate', 'exploit_code', 'potential_fix', 'video']
     
     #changes the design of the fields for the form on the template. Allows us to change the label and apply bootstrap
     def __init__(self, *args, **kwargs):
@@ -19,8 +19,6 @@ class CreateNewVuln(ModelForm):
         self.fields['status'].widget.attrs.update({'class':'form-control'})
 
         self.fields['assigned_to'].widget.attrs.update({'class':'form-control'})
-
-        self.fields['reported_by'].widget.attrs.update({'class':'form-control'})
 
         self.fields['vulnerable_website'].label = 'Vulnerable website link:'
         self.fields['vulnerable_website'].widget.attrs.update({'class':'form-control'})
