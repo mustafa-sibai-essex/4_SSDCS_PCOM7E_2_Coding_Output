@@ -53,10 +53,6 @@ def Awaiting(request):
     return render(request, "operatorview/awaiting.html", {"vulnerabilities": Vulnerabilities.objects.filter(status="Awaiting Approval")})
 
 @login_required
-def Escalated(request):
-    return render(request, "operatorview/escalate.html", {"vulnerabilities": Vulnerabilities.objects.filter(status="Escalated")})
-
-@login_required
 def searchresults(request):
     vulnerabilities = []
     if request.method == 'GET':
