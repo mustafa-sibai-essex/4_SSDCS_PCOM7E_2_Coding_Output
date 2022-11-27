@@ -1,144 +1,79 @@
 {% extends 'homepage/home.html' %}{% load static %}
 
 
-
-{% block title  %} NCTTS - Manage Reports {% endblock  %}
+{% block title  %} NCTTS - Manage Reports{% endblock  %}
 
 {% block extrastyle %}
-<link rel="stylesheet" href="{% static 'styles.css' %}">
-<link rel="stylesheet" href="{% static 'Stats-icons.css' %}"
+<link rel="stylesheet" href="{% static 'base.css' %}">
 {% endblock %}
 
-{% block header %}
-<nav class="navbar navbar-dark navbar-expand-md bg-dark py-3">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href=" {% url 'homepage:home' %}"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon" style="color: var(--bs-navbar-active-color); background:var(--bs-navbar-brand-color);"><img src=" {% static 'homepage/assets/img/cyberlogo.png' %}" width="24" height="22"></span><span>NCTTS</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-5"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navcol-5">
-            <ul class="navbar-nav ms-auto"></ul>
-            {% if user.is_authenticated %}
-            <span style="color: var(--bs-navbar-active-color);">You are logged in, Welcome: <i><b>{{ user.get_username}}</i></b></span>
-            <a class="btn btn-danger ms-md-2" role="button" href="{% url 'logout' %}">Logout</a>
-            {% else %}
-            <span style="color: var(--bs-navbar-active-color);">You are not logged in</span>
-            <a class="btn btn-primary ms-md-2" role="button" href="{% url 'login' %}?next={{request.path}}">Login</a>
-            {% endif %}
-            {% block nav_link_active %}
-                
-            {% endblock %}
-
-            {% block login %}
-            
-            {% endblock %}
-        </div>
-    </div>
-</nav>
+{% block nav_link_active %}
 {% endblock %}
 
-{% block content %}
 
-<div class="container py-4 py-xl-5">
-    <div class="row gy-4 row-cols-2 row-cols-md-4">
-        <div class="col">
-            <div class="text-center d-flex flex-column justify-content-center align-items-center py-3">
-                <div class="bs-icon-xl bs-icon-circle bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-calendar-event">
-                    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"></path>
-                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
-                </svg></div>
-                <div class="px-3">
-                    <h2 class="fw-bold mb-0">{{countAA}}</h2>
-                    <p class="mb-0">Awaiting approval</p>
-                    <a class="mb-0" href="{% url 'Awaiting' %}">View all</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="text-center d-flex flex-column justify-content-center align-items-center py-3">
-                <div class="bs-icon-xl bs-icon-circle bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-lightning-charge">
-                    <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41 4.157 8.5z"></path>
-                </svg></div>
-                <div class="px-3">
-                    <h2 class="fw-bold mb-0">{{countEs}}</h2>
-                    <p class="mb-0">Escalated</p>
-                    <a class="mb-0" href="{% url 'Escalated' %}">View all</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
+{%  block content %}
 
+<h1 style="background: #264b5d;color: var(--bs-white);font-size: 23px;padding: 20px 10px 10px 16px;"><div class="container">Reported Vulnerabilities</div></h1>
+<div class="container">
+    <div class="container; pad-text">
+        <div class="row align-items">
             <div class="col">
-                <div><label for="" class="sr-only">Department or Status</label>
-                    <div>
-                        <form action="{% url 'searchresults' %}" class="form-inline" method="get">
-                        <input name="search" type="" class="form-control" id="" placeholder="Search">
-                    </div> 
-                    <div> 
-                        <button class="btn btn-outline-success" type="submit" style="margin-top: 10px;">Search</button>
-                        </form>
+                <div style="background:#1f5672; color:white;width: 18rem;text-align:center;" class="card">
+                    <div class="card-body">
+                        <h5 class="Awaiting Approval">Awaiting Approval</h5>
+                        <h1 class="card-text" style="text-align:center;">{{countAA}}</h1>
+                        <a class="btn btn-light" href="{% url 'Awaiting' %}" role="button">View</a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col">
-            <div class="col">
-                <div><label for="" class="sr-only">Reference number</label>
-                    <div>
-                        <form action="{% url 'searchreference' %}" class="form-inline" method="get">
-                            <input name="search" type="" class="form-control" id="" placeholder="Search">
-                    </div> 
-                    <div> 
-                        <button class="btn btn-outline-success" type="submit" style="margin-top: 10px;">Search</button>
-                        </form>
-                    </div>
-                </div>
+            <div class="col align-self-center">
+                <form action="{% url 'searchresults' %}" class="form-inline" method="get">
+                    <input style = "width: 18rem;" name="search" type="" class="form-control" id="" placeholder="Status or Department">
+                    <button style = "width: 18rem; background-color:#0e91d3" class="btn btn-primary d-block" type="submit">Search</button>
+                </form>
             </div>
-        </div>
-    </div>
-    <section class="py-4 py-xl-5">
-        <div class="container">
-            <div class="bg-light border rounded border-0 border-light d-flex flex-column justify-content-between flex-lg-row p-4 p-md-5">
-                <div class="pb-2 pb-lg-1">
-                    <h2 class="fw-bold mb-2">Add New Vulnerabilities</h2>
-                    <p class="mb-0">Click the button to submit a vulnerability</p>
-                </div>
-                <div class="my-2"><a class="btn btn-warning fs-5 py-2 px-4" role="button" href="{% url 'AddNew' %}">Click here</a></div>
+            <div class="col align-self-center">
+                <form action="{% url 'searchreference' %}" class="form-inline" method="get">
+                    <input style = "width:18rem;" name="search" type="number" min="1" class="form-control" id="" placeholder="Reference Number">
+                    <button style = "width: 18rem; background-color:#0e91d3;" class="btn btn-primary d-block" type="submit">Search</button>
+                </form>
             </div>
-        </div>
-    </section>
-    <div class="pad-text">
-        <div class="p-5 border">
-          <table class="table table-striped">
-              <thead>
-                <tr>
-                <th>Reference</th>
-                <th>Status</th>
-                <th>Assigned to</th>
-                <th>Creation Date</th>
-                <th>Description</th>
-                </tr>
-            </thead>
-        <tbody>
-        {% for vulnerability in vulnerabilities %}
-          <tr>
-                <td>{{vulnerability.vul_no}}<br>
-                    <a href="{% url 'Update' vulnerability.pk %}">More Info/ Update</a><br>
-                    <a href= "{% url 'Delete' vulnerability.pk %}">Delete</a>
-                </td>
-                <td>
-                    {{vulnerability.status}}<br>
-                </td>
-                <td>
-                    {{vulnerability.assigned_to}}
-                </td>
-                <td>
-                    {{vulnerability.date_created}}
-                </td>
-                <td>
-                    {{vulnerability.description}}
-                </td>
-            </tr>           
-            {% endfor %}
-        </tbody>
-        </table>
         </div>
     </div>
 </div>
-{% endblock%}
+    <div class="pad-text">
+        <div class="p-5 border">
+            <div style="text-align:center;">
+                <a style="width:40rem; background-color:#0e91d3;text-decoration: none;text-align:center;color: white;" class="btn btn-primary" href="{% url 'AddNew' %}" role="button">Add New Vulnerability</a>
+            </div>
+            <div class="pad-text">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 5rem;">Reference</th>
+                            <th scope="col" style="width: 18rem;">Status</th>
+                            <th scope="col" style="width: 18rem;">Assigned to</th>
+                            <th scope="col" style="width: 20rem;">Creation Date</th>
+                            <th scope="col" style="width: 20rem;">Description</th>
+                            <th style="width: 10rem;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for vulnerability in vulnerabilities %}
+                        <tr>
+                            <td>{{vulnerability.vul_no}}</td>
+                            <td>{{vulnerability.status}}</td>
+                            <td>{{vulnerability.assigned_to}}</td>
+                            <td>{{vulnerability.date_created}}</td>
+                            <td>{{vulnerability.description}}</td>
+                            <td><a style="width:10rem; background-color:#264b5d;text-decoration: none;text-align:center;color: white;" class="btn btn-primary" href="{% url 'vulnerability' vulnerability.vul_no %}" role="button">More details</a>
+                        </tr>           
+                    {% endfor %}        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</html>
