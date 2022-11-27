@@ -1,0 +1,12 @@
+server {                                               
+        listen 80;                                     
+        server_name nctts-essex.com www.nctts-essex.com;
+                                                       
+location /static/ {                                    
+        root /home/admin/static/;                      
+}                                                      
+                                                       
+location / {                                           
+        proxy_pass http://35.241.232.205:8000;         
+        }                                              
+}                                                      
