@@ -24,11 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-5-0_bw$4jwl@$&yh_ht@-r%1=ppryr4*4)!e&=gp8*^fy1z&$="
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-#ALLOWED_HOSTS = []
+DEBUG = True
+ALLOWED_HOSTS = []
 
-DEBUG = False
-ALLOWED_HOSTS = ['35.241.232.205']
+# Production config
+#DEBUG = False
+#ALLOWED_HOSTS = ['35.241.232.205']
 
 # Application definition
 
@@ -128,6 +129,13 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'web/static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# Production config
+#STATIC_URL = '/static/'
+#STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR, 'web/static'),
+#]
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
