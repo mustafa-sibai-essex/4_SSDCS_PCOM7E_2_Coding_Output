@@ -1,0 +1,11 @@
+ python3.11 manage.py collectstatic
+ sudo systemctl reload nginx
+ nohup gunicorn -c gunicorn_config.py nctts.wsgi &
+
+ resources:
+ https://letsencrypt.org/getting-started/
+ http://nginx.org/en/docs/http/server_names.html
+ https://medium.com/@nabajyotidas/deploy-django-application-with-nginx-gunicorn-on-google-compute-engine-with-ubuntu-16-04-4c0f4dc010ad
+ https://wolfx.io/how-to-serve-static-and-media-files-in-nginx
+ https://www.youtube.com/watch?v=YnrgBeIRtvo
+ 

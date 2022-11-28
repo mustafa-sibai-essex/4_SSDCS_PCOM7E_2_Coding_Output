@@ -1,0 +1,38 @@
+server {                                                                                                      
+        server_name nctts-essex.com www.nctts-essex.com;                                                      
+                                                                                                              
+location /static/ {                                                                                           
+        alias /home/admin/nctts/static/;                                                                      
+}                                                                                                             
+                                                                                                              
+location / {                                                                                                  
+        proxy_pass http://35.241.232.205:8000;                                                                
+        }                                                                                                     
+                                                                                                              
+    listen 443 ssl; # managed by Certbot                                                                      
+    ssl_certificate /etc/letsencrypt/live/nctts-essex.com/fullchain.pem; # managed by Certbot                 
+    ssl_certificate_key /etc/letsencrypt/live/nctts-essex.com/privkey.pem; # managed by Certbot               
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot                                     
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot                                       
+                                                                                                              
+                                                                                                              
+}                                                                                                             
+server {                                                                                                      
+    if ($host = www.nctts-essex.com) {                                                                        
+        return 301 https://$host$request_uri;                                                                 
+    } # managed by Certbot                                                                                    
+                                                                                                              
+                                                                                                              
+    if ($host = nctts-essex.com) {                                                                            
+        return 301 https://$host$request_uri;                                                                 
+    } # managed by Certbot                                                                                    
+                                                                                                              
+                                                                                                              
+        listen 80;                                                                                            
+        server_name nctts-essex.com www.nctts-essex.com;                                                      
+    return 404; # managed by Certbot                                                                          
+                                                                                                              
+                                                                                                              
+                                                                                                              
+                                                                                                              
+}                                                                                                             
