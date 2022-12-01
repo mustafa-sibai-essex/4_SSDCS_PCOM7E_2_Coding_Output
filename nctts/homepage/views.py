@@ -3,8 +3,7 @@ from django.views.generic import TemplateView
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-
-# Create your views here.
+from .models import Account
 
 
 class HomeView(TemplateView):
@@ -23,18 +22,35 @@ def get_ip_address(request):
 def login_user(request):
 
     print(get_ip_address(request))
-
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
+
+            allow_login = False
+
+            try:
+                userAccountIp = Account.objects.get(user_id=user.id)
+                ip_addresses = userAccountIp.ip_addresses.replace(" ", "").split(",")
+                current_ip_address = get_ip_address(request)
+
+                for ip in ip_addresses:
+                    if current_ip_address == ip:
+                        allow_login = True
+                        break
+            except Account.DoesNotExist:
+                pass
+
             login(request, user)
             if user.is_superuser:
                 return redirect("admin:index")
             else:
-                return redirect("ManageReports")
+                if allow_login:
+                    return redirect("ManageReports")
+                else:
+                    return render(request, "authenticate/unknow-ip-login.html")
         else:
             return redirect("login_failed")
     else:
