@@ -137,11 +137,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #]
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'mail.nctts-essex.com'
 EMAIL_PORT = 465
-DEFAULT_FROM_EMAIL = 'coderfreak7@gmail.com'
-EMAIL_HOST_USER = 'coderfreak7@gmail.com'
-EMAIL_HOST_PASSWORD = 'tfhufvqrejmgbhmx'
+DEFAULT_FROM_EMAIL = 'noreply@nctts-essex.com'
+EMAIL_HOST_USER = 'noreply@nctts-essex.com'
+EMAIL_HOST_PASSWORD = 'xZrs4oXX-1Kx'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
