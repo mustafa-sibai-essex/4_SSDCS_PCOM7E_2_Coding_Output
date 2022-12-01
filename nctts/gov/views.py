@@ -3,7 +3,19 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 
+def get_ip_address(request):
+    user_ip_address = request.META.get("HTTP_X_FORWARDED_FOR")
+    if user_ip_address:
+        ip = user_ip_address.split(",")[0]
+    else:
+        ip = request.META.get("REMOTE_ADDR")
+    return ip
+
+
 def login_user(request):
+
+    print(get_ip_address(request))
+
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
@@ -20,8 +32,10 @@ def login_user(request):
     else:
         return render(request, "authenticate/gov-login.html", {})
 
+
 def login_success(request):
     return render(request, "authenticate/login_success.html")
 
+
 def login_failed(request):
-    return render(request, "authenticate/login_failed.html")    
+    return render(request, "authenticate/login_failed.html")
