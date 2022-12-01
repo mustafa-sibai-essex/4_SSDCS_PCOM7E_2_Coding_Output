@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     "report",
     "homepage.apps.HomepageConfig",
     "operatorview",
-    "gov",
     "sendEmail",
     "django.contrib.admin",
     "django.contrib.auth",
