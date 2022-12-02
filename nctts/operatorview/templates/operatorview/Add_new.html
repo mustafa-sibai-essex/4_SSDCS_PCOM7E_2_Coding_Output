@@ -1,18 +1,50 @@
-{% load static %}
+{% extends 'homepage/home.html' %}{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+
+{% block title  %} NCTTS - Add New{% endblock  %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'base.css' %}">
+{% endblock %}
+
+{% block header %}
+<nav class="navbar navbar-dark navbar-expand-md bg-dark py-3">
+    <div class="container"><a class="navbar-brand d-flex align-items-center" href=" {% url 'homepage:home' %}"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon" style="color: var(--bs-navbar-active-color); background:var(--bs-navbar-brand-color);"><img src=" {% static 'homepage/assets/img/cyberlogo.png' %}" width="24" height="22"></span><span>NCTTS</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-5"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navcol-5">
+            <ul class="navbar-nav ms-auto"></ul>
+            {% if user.is_authenticated %}
+            <span style="color: var(--bs-navbar-active-color);">You are logged in, Welcome: <i><b>{{ user.get_username}}</i></b></span>
+            <a class="btn btn-danger ms-md-2" role="button" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <span style="color: var(--bs-navbar-active-color);">You are not logged in</span>
+            <a class="btn btn-primary ms-md-2" role="button" href="{% url 'login' %}?next={{request.path}}">Login</a>
+            {% endif %}
+            {% block nav_link_active %}
+                
+            {% endblock %}
+
+            {% block login %}
+            
+            {% endblock %}
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{%  block content %}
+<h1 style="background: #264b5d;color: var(--bs-white);font-size: 23px;padding: 20px 10px 10px 16px;"><div class="container">Create new Vulnerability Record</div></h1>
     <head>
-        <title>NCTTS - Add new</title>
         <link href="{% static 'styles.css' %}" rel="stylesheet">
     </head>
     <body>
-        <h1>Add new Vulnerability Record</h1>
-        <form method="POST" action="">
-            {% csrf_token %}
-            {{form.as_p}}
-            <button type="submit", name="Submit">Save</button>
-        </form>
-        <a href="{% url 'ManageReports' %}">Return to Manage reports</a>
+        <div class="pad-text" >
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn btn-primary d-block w-100" type="submit">Submit</button>
+            </form>
+            <a href="{% url 'ManageReports' %}">Return</a>
+        </div>
     </body>
-</html>
+
+{% endblock %}
