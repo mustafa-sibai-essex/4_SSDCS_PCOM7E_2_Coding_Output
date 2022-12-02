@@ -1,71 +1,50 @@
-{% extends 'homepage/home.html' %}{% load static %}
+{% load static %}
 
-
-{% block title  %} NCTTS - Search Result{% endblock  %}
-
-{% block extrastyle %}
-<link rel="stylesheet" href="{% static 'base.css' %}">
-{% endblock %}
-
-{% block header %}
-<nav class="navbar navbar-dark navbar-expand-md bg-dark py-3">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href=" {% url 'homepage:home' %}"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon" style="color: var(--bs-navbar-active-color); background:var(--bs-navbar-brand-color);"><img src=" {% static 'homepage/assets/img/cyberlogo.png' %}" width="24" height="22"></span><span>NCTTS</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-5"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navcol-5">
-            <ul class="navbar-nav ms-auto"></ul>
-            {% if user.is_authenticated %}
-            <span style="color: var(--bs-navbar-active-color);">You are logged in, Welcome: <i><b>{{ user.get_username}}</i></b></span>
-            <a class="btn btn-danger ms-md-2" role="button" href="{% url 'logout' %}">Logout</a>
-            {% else %}
-            <span style="color: var(--bs-navbar-active-color);">You are not logged in</span>
-            <a class="btn btn-primary ms-md-2" role="button" href="{% url 'login' %}?next={{request.path}}">Login</a>
-            {% endif %}
-            {% block nav_link_active %}
-                
-            {% endblock %}
-
-            {% block login %}
-            
-            {% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>NCTTS - Manage Reports</title>
+        <link href="{% static 'styles.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Awaiting Approval</h1>
+        <div>               
+            <table>
+                <tr>
+                    <th>Reference</th>
+                    <th>Status</th>
+                    <th>Assigned to</th>
+                    <th>Description</th>
+                    <th>Creation Date</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                {% for vulnerability in vulnerabilities %}
+                <tr>
+                    <td>
+                        {{vulnerability.vul_no}}
+                    </td>
+                    <td>
+                        {{vulnerability.status}}
+                    </td>
+                    <td>
+                        {{vulnerability.assigned_to}}
+                    </td>
+                    <td>
+                        {{vulnerability.description}}
+                    </td>
+                    <td>
+                        {{vulnerability.date_created}}
+                    </td>
+                    <td>
+                        <a href="{% url 'vulnerability' vulnerability.vul_no %}">More Info</a>
+                    </td>
+                    <td>
+                        <a href=>Update</a>
+                    </td>
+                </tr>       
+                {% endfor %}
         </div>
-    </div>
-</nav>
-{% endblock %}
-
-{%  block content %}
-<h1 style="background: #264b5d;color: var(--bs-white);font-size: 23px;padding: 20px 10px 10px 16px;"><div class="container">Search Result</div></h1>
-        <div class="pad-text">
-            <div class="p-5 border">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col" style="width:60px">Reference</th>
-                            <th scope="col" style="width:250px">Status</th>
-                            <th scope="col" style="width:250px">Assigned to</th>
-                            <th scope="col">Creation Date</th>
-                            <th scope="col">Description</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for vulnerability in vulnerabilities %}
-                        <tr>
-                            <td>{{vulnerability.vul_no}}</td>
-                            <td>{{vulnerability.status}}</td>
-                            <td>{{vulnerability.assigned_to}}</td>
-                            <td>{{vulnerability.date_created}}</td>
-                            <td>{{vulnerability.description}}</td>
-                            <td><a style="background-color:#264b5d; text-align:center;color: white;" class="btn btn-light" href="{% url 'vulnerability' vulnerability.vul_no %}" role="button">More details</a></td>
-                        </tr>
-                    {% empty %}
-                        <tr> <h4> 0 Vulnerabilities Found </h4> </tr>            
-                    {% endfor %}        
-                    </tbody>
-                </table>
-            </div>
-            <div class="pad-top centered">
-                <a href="{% url 'ManageReports' %}" target="_self"><button type="button" class="btn btn-secondary">Back</button>
-            </div>
-        </div>
-
-{% endblock %}
+        <a href="{% url 'ManageReports' %}">Return to Manage reports</a>
+    </body>
+</html>

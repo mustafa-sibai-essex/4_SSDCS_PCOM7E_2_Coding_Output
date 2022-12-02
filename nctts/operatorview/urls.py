@@ -8,6 +8,7 @@ urlpatterns = [
     path("Update/<str:vuln_id>/", views.updatevuln, name="Update"),
     path("Delete/<str:vuln_id>/", views.Delete, name="Delete"),
     path("Awaiting", views.Awaiting, name="Awaiting"),
+    path("Escalated", views.Escalated, name="Escalated"),
     path("searchresults", views.searchresults, name="searchresults"),
     path("searchreference", views.searchreference, name="searchreference")
 ]
