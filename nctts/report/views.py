@@ -6,6 +6,7 @@ from . import models
 # Create your views here.
 
 def report(request):
+    """This method gets user input from the menu and stores it to the database."""
     if request.method == "POST":
         first_name = request.POST['fname']
         last_name = request.POST['lname']
@@ -41,10 +42,12 @@ def report(request):
 
 
 def success(request):
+    """Just renders success message."""
     return render(request, "success.html")
 
 
 def delete_info(request):
+    """This method deletes a user record based on user input."""
     if request.method == "POST":
         email = request.POST['email']
         remarks = request.POST['comments']
@@ -63,13 +66,16 @@ def delete_info(request):
 
 
 def delete_success(request):
+    """Just renders a successful deletion message."""
     return render(request, "delete_success.html")
 
 
 def view_vulnerabilities(request):
+    """This method lists the vulnerabilities with status 'fixed'."""
     vulnerabilities = models.Vulnerabilities.objects.filter(status="Fixed")
     return render(request, "view_vulnerabilities.html", {'vulnerabilities': vulnerabilities})
 
 
 def delete_error(request):
+    """Just renders deletion error."""
     return render(request, "delete_error.html")
