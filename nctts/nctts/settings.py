@@ -29,16 +29,19 @@ ALLOWED_HOSTS = []
 
 # Production config
 #DEBUG = False
-#ALLOWED_HOSTS = ['35.241.232.205']
+#ALLOWED_HOSTS = ["35.241.232.205"]
+#CSRF_TRUSTED_ORIGINS = [
+#    "35.241.232.205",
+#    "https://*.nctts-essex.com",
+#    "https://*.127.0.0.1",
+#]
 
 # Application definition
 
 INSTALLED_APPS = [
-    "report",
     "homepage.apps.HomepageConfig",
+    "report",
     "operatorview",
-    "gov",
-    "sendEmail",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -62,7 +65,7 @@ ROOT_URLCONF = "nctts.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR,'templates')],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -123,25 +126,25 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-# STATIC_URL = "static/"
+STATIC_URL = "static/"
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'web/static'),
+   os.path.join(BASE_DIR, 'web/static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Production config
-#STATIC_URL = '/static/'
+#STATIC_URL = "/static/"
 #STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, 'web/static'),
+#    os.path.join(BASE_DIR, "web/static"),
 #]
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = "mail.nctts-essex.com"
 EMAIL_PORT = 465
-DEFAULT_FROM_EMAIL = 'coderfreak7@gmail.com'
-EMAIL_HOST_USER = 'coderfreak7@gmail.com'
-EMAIL_HOST_PASSWORD = 'tfhufvqrejmgbhmx'
+DEFAULT_FROM_EMAIL = "noreply@nctts-essex.com"
+EMAIL_HOST_USER = "noreply@nctts-essex.com"
+EMAIL_HOST_PASSWORD = "xZrs4oXX-1Kx"
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
@@ -151,4 +154,4 @@ EMAIL_USE_SSL = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = "/"
