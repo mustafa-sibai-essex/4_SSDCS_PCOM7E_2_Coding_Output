@@ -1,7 +1,10 @@
+"""Contains the models used in thr app. Each class is a table in the database."""
+
 from django.db import models
 
 
 class PublicUser(models.Model):
+    """A table to store the data of a public user."""
     user_no = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=50, default="Anonymous")
     last_name = models.CharField(max_length=50, default="User")
@@ -10,6 +13,7 @@ class PublicUser(models.Model):
 
 
 class Vulnerabilities(models.Model):
+    """A table to store the vulnerability data reported by the user."""
     AwaitingApproval = 'Awaiting Approval'
     Assigned = 'Assigned'
     Rejected = "Rejected"

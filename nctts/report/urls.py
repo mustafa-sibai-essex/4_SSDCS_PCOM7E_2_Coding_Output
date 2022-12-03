@@ -1,3 +1,5 @@
+"""This file contains the paths of the pages in the app"""
+
 from django.urls import path
 from . import views
 

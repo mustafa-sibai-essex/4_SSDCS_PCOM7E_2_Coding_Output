@@ -1,3 +1,5 @@
+"""This file contains the logic of the app."""
+
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.shortcuts import render, redirect
 from . import models
@@ -37,8 +39,7 @@ def report(request):
         ins_vulnerability.save()
         return redirect("/report/success")
 
-    else:
-        return render(request, "report.html")
+    return render(request, "report.html")
 
 
 def success(request):
@@ -53,16 +54,16 @@ def delete_info(request):
         remarks = request.POST['comments']
         try:
             record = models.PublicUser.objects.get(email=email)
-            record.first_name = "Anonymous"  # When user leaves these fields empty, we have "Anonymous", "User" and "No email".
-            record.last_name = "User"  # Hence, when we delete user's contact information, we revert back to the default.
+            record.first_name = "Anonymous"  # When user leaves these fields empty, we have "Anonymous", "User" and
+            # "No email".
+            record.last_name = "User"  # Hence, when we delete user's contact information, we revert to the default.
             record.email = "No email"
             record.remarks = remarks
             record.save()
         except ObjectDoesNotExist:
             return redirect("/report/delete_error")
         return redirect("/report/delete_success")
-    else:
-        return render(request, "delete_info.html")
+    return render(request, "delete_info.html")
 
 
 def delete_success(request):
