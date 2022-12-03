@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from django.contrib import messages
+from django.contrib.auth import authenticate, login
 
 
 def login_user(request):
@@ -24,4 +23,4 @@ def login_success(request):
     return render(request, "authenticate/login_success.html")
 
 def login_failed(request):
-    return render(request, "authenticate/login_failed.html")    
+    return render(request, "authenticate/login_failed.html")

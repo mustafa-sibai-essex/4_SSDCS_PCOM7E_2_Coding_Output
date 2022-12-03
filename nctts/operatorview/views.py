@@ -1,8 +1,8 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from report.models import Vulnerabilities
-from.forms import CreateNewVuln
 from django.db.models import Q
+from.forms import CreateNewVuln
+
 
 
 # Create your views here.

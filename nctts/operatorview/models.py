@@ -9,7 +9,7 @@ class PublicUser(models.Model):
     email = models.EmailField(max_length=100, default="No email")
 
     def __str__(self):
-        return ("User reference - " + str(self.user_no))
+        return "User reference - " + str(self.user_no)
 
 
 class VulnerabilitiesOP(models.Model):
@@ -70,5 +70,3 @@ class VulnerabilitiesOP(models.Model):
     potential_fix = models.TextField(blank=True, max_length=1000)
     video = models.URLField(blank=True, max_length=200)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
-
-
