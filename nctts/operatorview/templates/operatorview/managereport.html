@@ -51,10 +51,10 @@
                 </div>
             </div>
             <div class="col align-self-center">
-                <div><label for="" class="sr-only">Department or Status</label>
+                <div><label for="" class="sr-only">Search for Vulnerabilities</label>
                     <div>
                         <form action="{% url 'searchresults' %}" class="form-inline" method="get">
-                        <input name="search" type="" class="form-control" id="" placeholder="Search">
+                        <input name="search" type="" class="form-control" id="" placeholder="Department, Status or Reference Number">
                     </div> 
                     <div> 
                         <button class="btn btn-outline-success" type="submit" style="margin-top: 10px;">Search</button>
@@ -62,18 +62,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col align-self-center">
-                <div><label for="" class="sr-only">Reference number</label>
-                    <div>
-                        <form action="{% url 'searchreference' %}" class="form-inline" method="get">
-                            <input name="search" type="number" class="form-control" id="1" placeholder="Search">
-                    </div> 
-                    <div> 
-                        <button class="btn btn-outline-success" type="submit" style="margin-top: 10px;">Search</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 <section class="py-4 py-xl-5">
@@ -89,30 +78,32 @@
 </section>
 <div class="pad-text">
     <div class="p-5 border">
-      <table class="table table-striped">
-          <thead>
-                        <tr>
-                            <th scope="col" style="width: 5rem;">Reference</th>
-                            <th scope="col" style="width: 18rem;">Status</th>
-                            <th scope="col" style="width: 18rem;">Assigned to</th>
-                            <th scope="col" style="width: 20rem;">Creation Date</th>
-                            <th scope="col" style="width: 20rem;">Description</th>
-                            <th style="width: 10rem;"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for vulnerability in vulnerabilities %}
-                        <tr>
-                            <td>{{vulnerability.vul_no}}</td>
-                            <td>{{vulnerability.status}}</td>
-                            <td>{{vulnerability.assigned_to}}</td>
-                            <td>{{vulnerability.date_created}}</td>
-                            <td>{{vulnerability.description}}</td>
-                            <td><a style="background-color:#264b5d; text-align:center;color: white;" class="btn btn-light" href="{% url 'vulnerability' vulnerability.vul_no %}" role="button">More details</a></td>
-                        </tr>           
-                    {% endfor %}        
-                    </tbody>
-                </table>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 5rem;">Reference</th>
+                                <th scope="col" style="width: 18rem;">Status</th>
+                                <th scope="col" style="width: 18rem;">Assigned to</th>
+                                <th scope="col" style="width: 20rem;">Creation Date</th>
+                                <th scope="col" style="width: 20rem;">Description</th>
+                                <th style="width: 10rem;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for vulnerability in vulnerabilities %}
+                            <tr>
+                                <td>{{vulnerability.vul_no}}</td>
+                                <td>{{vulnerability.status}}</td>
+                                <td>{{vulnerability.assigned_to}}</td>
+                                <td>{{vulnerability.date_created}}</td>
+                                <td>{{vulnerability.description}}</td>
+                                <td><a style="background-color:#264b5d; text-align:center;color: white;" class="btn btn-light" href="{% url 'vulnerability' vulnerability.vul_no %}" role="button">More details</a></td>
+                            </tr>           
+                        {% endfor %}        
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

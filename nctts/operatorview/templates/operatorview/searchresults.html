@@ -33,35 +33,37 @@
 
 {%  block content %}
 <h1 style="background: #264b5d;color: var(--bs-white);font-size: 23px;padding: 20px 10px 10px 16px;"><div class="container">Search Result</div></h1>
-        <div class="pad-text">
+        <div class="container pad-text">
             <div class="p-5 border">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col" style="width:60px">Reference</th>
-                            <th scope="col" style="width:250px">Status</th>
-                            <th scope="col" style="width:250px">Assigned to</th>
-                            <th scope="col">Creation Date</th>
-                            <th scope="col">Description</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for vulnerability in vulnerabilities %}
-                        <tr>
-                            <td>{{vulnerability.vul_no}}</td>
-                            <td>{{vulnerability.status}}</td>
-                            <td>{{vulnerability.assigned_to}}</td>
-                            <td>{{vulnerability.date_created}}</td>
-                            <td>{{vulnerability.description}}</td>
-                            <td><a style="background-color:#264b5d; text-align:center;color: white;" class="btn btn-light" href="{% url 'vulnerability' vulnerability.vul_no %}" role="button">More details</a></td>
-                        </tr>
-                    {% empty %}
-                        <tr> <h4> 0 Vulnerabilities Found </h4> </tr>            
-                    {% endfor %}        
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width:60px">Reference</th>
+                                <th scope="col" style="width:250px">Status</th>
+                                <th scope="col" style="width:250px">Assigned to</th>
+                                <th scope="col">Creation Date</th>
+                                <th scope="col">Description</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for vulnerability in vulnerabilities %}
+                            <tr>
+                                <td>{{vulnerability.vul_no}}</td>
+                                <td>{{vulnerability.status}}</td>
+                                <td>{{vulnerability.assigned_to}}</td>
+                                <td>{{vulnerability.date_created}}</td>
+                                <td>{{vulnerability.description}}</td>
+                                <td><a style="background-color:#264b5d; text-align:center;color: white;" class="btn btn-light" href="{% url 'vulnerability' vulnerability.vul_no %}" role="button">More details</a></td>
+                            </tr>
+                        {% empty %}
+                            <tr> <h4> 0 Vulnerabilities Found </h4> </tr>            
+                        {% endfor %}        
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="pad-top centered">
                 <a href="{% url 'ManageReports' %}" target="_self"><button type="button" class="btn btn-secondary">Back</button>

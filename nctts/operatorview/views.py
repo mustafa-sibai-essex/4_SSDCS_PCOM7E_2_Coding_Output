@@ -72,7 +72,7 @@ def searchresults(request):
     vulnerabilities = []
     if request.method == 'GET':
         query = request.GET.get(str('search'))
-        vulnerabilities = Vulnerabilities.objects.filter(Q(status=query) | Q(assigned_to=query))
+        vulnerabilities = Vulnerabilities.objects.filter(Q(status=query) | Q(assigned_to=query) | Q(vul_no=query))
     return render(request, "operatorview/searchresults.html", {'query':query, 'vulnerabilities':vulnerabilities})
 
 @login_required
