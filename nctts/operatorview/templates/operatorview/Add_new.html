@@ -42,14 +42,14 @@
                 </svg></h2>
                 </div>
             </div>
-        <div class="pad-text" >
+        <div class="pad-text py-4">
             <form method="POST" action="">
                 {% csrf_token %}
                 {{form.as_p}}
                 <button class="btn btn-primary d-block w-100" type="submit">Submit</button>
             </form>
         </div>
-        <div class="pad-top">
+        <div class="py-4 pad-top">
             <a href="{% url 'ManageReports' %}" target="_self"><button type="button" class="btn btn-secondary">Return to Manage Reports</button></a>
         </div>
     </section>
