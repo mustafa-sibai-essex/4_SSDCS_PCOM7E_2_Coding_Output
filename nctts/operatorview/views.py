@@ -71,8 +71,11 @@ def Awaiting(request):
 def searchresults(request):
     vulnerabilities = []
     if request.method == 'GET':
-        query = request.GET.get(str('search'))
-        vulnerabilities = Vulnerabilities.objects.filter(Q(status=query) | Q(assigned_to=query) | Q(vul_no=query))
+        query = request.GET.get('search')
+        try:
+            vulnerabilities = Vulnerabilities.objects.filter(vul_no=query)
+        except:
+            vulnerabilities = Vulnerabilities.objects.filter(Q(status=query) | Q(assigned_to=query))
     return render(request, "operatorview/searchresults.html", {'query':query, 'vulnerabilities':vulnerabilities})
 
 @login_required
