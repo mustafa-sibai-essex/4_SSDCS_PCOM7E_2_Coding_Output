@@ -47,7 +47,7 @@ def Add_new(request):
 
     form=CreateNewVuln()
     if request.method == 'POST':
-        """# this function will save the completed form as a new vulnerability record in the model."""
+        """ this function will save the completed form as a new vulnerability record in the model."""
         form = CreateNewVuln(request.POST)
         if form.is_valid():
             vul = form.save()
