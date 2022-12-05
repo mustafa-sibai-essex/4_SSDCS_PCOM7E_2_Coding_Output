@@ -25,4 +25,4 @@ There are two ways to test the software.
 
 2. Install the following softwares:
      1. Install the latest version of Python. As of writing this document is is 3.11
-    i. https://www.python.org/downloads/ 
+     2. https://www.python.org/downloads/ 
