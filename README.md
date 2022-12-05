@@ -27,7 +27,7 @@ There are two ways to test the software.
    3. Login using the admin credentials.
    4. Click on Add users.
    5. Enter the user username, password, and public IP address.
-      **6. Note: it is important you add the public IP address of the user otherwise you will not be able to log into the operator page.**
+     6. Note: it is important you add the public IP address of the user otherwise you will not be able to log into the operator page.**
    7. Click on save and logout.
    8. Click on login and enter the operator user credentials.
 
