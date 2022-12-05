@@ -18,3 +18,8 @@ class HomepageURLTest(TestCase):
         url = reverse('login_success')
         print(resolve(url))
         self.assertEquals(resolve(url).func, login_success)
+        
+        def test_homepage_url(self):
+        url = reverse('login_failed')
+        print(resolve(url))
+        self.assertEquals(resolve(url).func, login_failed)
