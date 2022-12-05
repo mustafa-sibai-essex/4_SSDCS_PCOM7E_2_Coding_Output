@@ -14,12 +14,12 @@ class HomepageURLTest(TestCase):
         print(resolve(url))
         self.assertEquals(resolve(url).func, login_user)
     
-    def tests_login_success(self):
+    def test_login_success(self):
         url = reverse('login_success')
         print(resolve(url))
         self.assertEquals(resolve(url).func, login_success)
         
-    def tests_login_failed(self):
+    def test_login_failed(self):
         url = reverse('login_failed')
         print(resolve(url))
         self.assertEquals(resolve(url).func, login_failed)
