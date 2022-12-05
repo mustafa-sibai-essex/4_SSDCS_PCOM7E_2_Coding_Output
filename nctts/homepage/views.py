@@ -54,7 +54,7 @@ def login_user(request):
                 else:
                     return render(request, "authenticate/unknow-ip-login.html")
         else:
-            return redirect("login_failed")
+            return redirect("homepage:login_failed")
     else:
         return render(request, "authenticate/gov-login.html", {})
 
