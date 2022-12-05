@@ -1,8 +1,9 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.http import HttpRequest
+from django.urls import reverse
 
 
 class TestViews(TestCase):
     
-    def test_send_mail(self):
-        pass
+    def test_send_mail_GET(self):
+        client = Client()
