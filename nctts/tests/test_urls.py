@@ -1,4 +1,4 @@
-from django.test import SimpleTestCase
+from django.test import TestCase
 from django.urls import reverse, resolve
 from homepage.views import HomeView, login_user, login_success, login_failed
 from django import setup
@@ -10,7 +10,7 @@ setup()
 class HomepageURLTest(TestCase):
     
     def test_login_user(self):
-        urls = reverse('login_user')
+        url = reverse('login_user')
         print(resolve(url))
         self.assertEquals(resolve(url).func, login_user)
     
