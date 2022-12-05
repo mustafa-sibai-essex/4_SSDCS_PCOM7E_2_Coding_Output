@@ -1,5 +1,6 @@
 from django.forms import ModelForm
 from report.models import Vulnerabilities
+from django import forms
 
 class DateTimeInput(forms.DateTimeInput):
     """Creates the input type for the date/time part of the form"""
