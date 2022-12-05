@@ -24,7 +24,7 @@ There are two ways to test the software.
 1. Visit and try out the website at https://www.nctts-essex.com
 2. Install the following softwares:
      1. Install the latest version of Python. As of writing this document is is 3.11
-        2. https://www.python.org/downloads/ 
+        1. https://www.python.org/downloads/ 
 3. Install the latest version of Django. As of writing this document it is 4.1.3
      1. https://www.djangoproject.com/download/ 
 Install the latest version of Git. As of writing this document it is 2.38.1
