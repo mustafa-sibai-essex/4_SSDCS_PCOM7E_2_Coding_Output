@@ -2,11 +2,11 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from report.models import *
 from django.contrib.auth.decorators import login_required
-from.forms import CreateNewVuln
+from .forms import CreateNewVuln
 from django.db.models import Q
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from .models import models
-
+from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -66,6 +66,23 @@ def updatevuln(request, vuln_id):
         form = CreateNewVuln(request.POST, instance = vulnerability)
         if form.is_valid():
             form.save()
+            if vulnerability.status == 'Fixed':
+                if vulnerability.reported_by.email != "":
+                    send_mail(
+                        "NCTTS vulnerability status update",
+                        """
+Hello {first_name} {last_name},
+We would like to inform you that your submitted vulnerability status has changed to {status}.""".format(
+                            first_name=vulnerability.reported_by.first_name, 
+                            last_name=vulnerability.reported_by.last_name,
+                            status=vulnerability.status
+                        ),
+                        None,
+                        [vulnerability.reported_by.email],
+                        False,
+                    )
+                print(vulnerability.reported_by.email)
+
             return redirect("ManageReports")
     return render(request, "operatorview/Add_new.html", {"form":form})
 
