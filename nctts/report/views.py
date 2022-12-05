@@ -1,6 +1,8 @@
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
+
+from nctts.sendEmail import SendEmail
 from . import models
 
 # Create your views here.
@@ -46,7 +48,7 @@ def report(request):
         ins_vulnerability.save()
 
         if email != "":
-            send_mail(
+            SendEmail(
                 "NCTTS vulnerability submission",
                 """
 Hello {first_name} {last_name},
@@ -54,10 +56,8 @@ Thank you for submitting your vulnerability.
 We will review and try to fix the vulnerability within 60 days. Once we fixed the vulnerability, detailed information will be published on our website.""".format(
                     first_name=first_name, last_name=last_name
                 ),
-                None,
-                [email],
-                False,
-            )
+                email,
+            ).start()
 
         return redirect("/report/success")
 
