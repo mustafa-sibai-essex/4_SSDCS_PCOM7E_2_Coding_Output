@@ -24,5 +24,5 @@ There are two ways to test the software.
 1. Visit and try out the website at https://www.nctts-essex.com
 
 2. Install the following softwares:
-  2.1 Install the latest version of Python. As of writing this document is is 3.11
+   2.1 Install the latest version of Python. As of writing this document is is 3.11
     i. https://www.python.org/downloads/ 
