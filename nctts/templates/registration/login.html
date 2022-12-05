@@ -1,0 +1,66 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" href="{% static "admin/css/login.css" %}">
+{{ form.media }}
+{% endblock %}
+
+
+{% block bodyclass %}{{ block.super }} login{% endblock %}
+
+{% block breadcrumbs %}
+
+<div class="breadcrumbs">
+  <a href="{% url 'homepage:home'%}">Home</a>
+</div>
+
+{% endblock %}
+
+{% block branding %}
+<h1 id="head">
+    <img src="{% static 'homepage/assets/img/cyberlogo.png' %}" width="35" height="35" />
+    Login
+
+{% endblock %}
+
+
+{% block content %}
+
+{% if form.errors %}
+    <p class="errornote">
+    Your username or password was incorrect. Try again.
+    </p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    {% blocktranslate trimmed %}
+        You are authenticated as {{ username }}, but are not authorized to
+        access this page. Would you like to login to a different account?
+    {% endblocktranslate %}
+    {% else %}
+    <p class="errornote">
+        Please login to see this page 
+    </p>
+    {% endif %}
+
+{% endif %}
+
+<form action="" method="POST" id="login-form">
+    {% csrf_token %}
+    <div class="form-row">
+        <label for="id_username" class="form-label">Username:</label>
+        <input type="text" name="username" autocapitalize="none" autocomplete="username" maxlength="150" id="id_username">
+      </div>
+    <div class="form-row">
+      <label for="id_password" class="form-label">Password:</label>
+      <input type="password" name="password" autocomplete="current-password" required="" id="id_password">  
+    </div>
+    <div class="submit-row">
+      <input type="submit" value="{% translate 'Log in' %}">
+    </div>
+    <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+  </form>
+
+{% endblock %}
+

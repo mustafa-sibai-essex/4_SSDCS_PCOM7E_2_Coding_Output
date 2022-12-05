@@ -1,0 +1,29 @@
+{% extends 'homepage/home.html' %} {% load static %}
+
+
+
+{% block title  %} NCTTS - Unknow IP address{% endblock  %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'base.css' %}">
+{% endblock %}
+
+{% block nav_link_active %}
+
+{% endblock %}
+
+{% block login %}
+
+{% endblock%}
+
+{% block content %}
+  <div class="alert alert-danger" role="alert">
+    <div class="container">
+      <h4 class="alert-heading">Login Failed!</h4>
+      <p>You are attempting to login from an unknown IP address. Access Denied.</p>
+    </div>
+  </div>
+  <div class="pad-top centered">
+      <a href="{% url 'homepage:login_user' %}" target="_self"><button type="button" class="btn btn-secondary">Login again</button>
+  </div>
+{% endblock %}

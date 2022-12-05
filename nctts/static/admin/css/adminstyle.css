@@ -1,13 +1,13 @@
 #header {
   
     background: rgba(33, 37, 41, 1);
+    color: #ffffff !important
+
 }
 
 #branding h1{
     color: #ffffff;
 }
-
-
 
 /* div.breadcrumbs {
     background: var(--breadcrumbs-bg);

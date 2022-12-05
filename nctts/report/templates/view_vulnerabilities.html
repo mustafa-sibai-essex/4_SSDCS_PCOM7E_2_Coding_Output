@@ -1,30 +1,57 @@
-{% extends 'layout.html' %}
+{% extends 'homepage/home.html' %}{% load static %}
+
+
+{% block title  %} NCTTS - Verified vulnerabilities{% endblock  %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'base.css' %}">
+{% endblock %}
+
+{% block nav_link_active %}
+<li class="nav-item"><a class="nav-link" href="{% url 'homepage:home'%}">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'report' %}">Report Vulnerability</a></li>
+<li class="nav-item"><a class="nav-link active" href="{% url 'view_vulnerabilities' %}">View Vulnerabilities</a></li>
+{% endblock %}
+
 
 {%  block content %}
-    <div class="pad-text">
-        <div class="p-5 border">
-          <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col" style="width:60px">#</th>
-                  <th scope="col" style="width:250px">Vulnerable Website</th>
-                  <th scope="col" style="width:250px">Date and time reported</th>
-                  <th scope="col">Description</th>
-                </tr>
-              </thead>
-              <tbody>
-              {% for vulnerability in vulnerabilities %}
-                <tr>
-                  <th scope="row">{{ vulnerability.vul_no }}</th>
-                  <td>{{ vulnerability.vulnerable_website }}</td>
-                  <td>{{ vulnerability.date_time }}</td>
-                  <td>{{ vulnerability.description }}</td>
-                </tr>
-              {% endfor %}
-              </tbody>
-          </table>
+<h1 style="background: #264b5d;color: var(--bs-white);font-size: 23px;padding: 20px 10px 10px 16px;"><div class="container">Verified vulnerabilities</div></h1>
+<div class="container py-4 py-xl-5">
+  <div class="pad-text">    
+        <div class="border border-info pad-text centered">
+            <p>Here are vulnerabilities that are verified by our team so far:</p>
         </div>
     </div>
+    <div class="pad-top centered">
+         <h3>Verified vulnerabilities</h3>
+    </div>
+    <div class="pad-text">
+        <div class="p-5 border">
+          <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col" style="width:60px">#</th>
+                    <th scope="col" style="width:250px">Vulnerable Website</th>
+                    <th scope="col" style="width:250px">Date and time reported</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for vulnerability in vulnerabilities %}
+                  <tr>
+                    <th scope="row">{{ vulnerability.vul_no }}</th>
+                    <td>{{ vulnerability.vulnerable_website }}</td>
+                    <td>{{ vulnerability.date_time }}</td>
+                    <td>{{ vulnerability.description }}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+</div>
 
 
 {%  endblock %}

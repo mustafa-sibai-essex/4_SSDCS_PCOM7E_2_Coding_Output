@@ -1,90 +1,111 @@
-{% load static %}
+{% extends 'homepage/home.html' %}{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>NCTTS - Manage Reports</title>
-        <link href="{% static 'styles.css' %}" rel="stylesheet">
-    </head>
-    <body>
-        <h1>Manage Reports</h1>
-        <div>
-        <table>
-            <tr>
-                <th>Status</th>
-                <th>Vulnerabilities</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>
-                    Awaiting approval
-                </td>
-                <td> 
-                    {{countAA}}                       
-                </td>
-                <td><a href="{% url 'Awaiting' %}">View all</a></td>                
-            </tr>           
-            <tr>
-                <td>
-                    Escalated
-                </td>
-                <td>    
-                    {{countEs}}                    
-                </td>
-                <td><a href="{% url 'Escalated' %}">View all</a></td>
-            </tr>    
+
+
+{% block title  %} NCTTS - Manage Reports {% endblock  %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'Stats-icons.css' %}"
+{% endblock %}
+
+{% block header %}
+<nav class="navbar navbar-dark navbar-expand-md bg-dark py-3">
+    <div class="container"><a class="navbar-brand d-flex align-items-center" href=" {% url 'homepage:home' %}"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon" style="color: var(--bs-navbar-active-color); background:var(--bs-navbar-brand-color);"><img src=" {% static 'homepage/assets/img/cyberlogo.png' %}" width="24" height="22"></span><span>NCTTS</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-5"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navcol-5">
+            <ul class="navbar-nav ms-auto"></ul>
+            {% if user.is_authenticated %}
+            <span style="color: var(--bs-navbar-active-color);">You are logged in, Welcome: <i><b>{{ user.get_username}}</i></b></span>
+            <a class="btn btn-danger ms-md-2" role="button" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <span style="color: var(--bs-navbar-active-color);">You are not logged in</span>
+            <a class="btn btn-primary ms-md-2" role="button" href="{% url 'login' %}?next={{request.path}}">Login</a>
+            {% endif %}
+            {% block nav_link_active %}
+                
+            {% endblock %}
+
+            {% block login %}
+            
+            {% endblock %}
         </div>
-        <div style='margin-top:30px;'>            
-        <table>
-            <tr>
-                <th>Reference</th>
-                <th>Status</th>
-                <th>Assigned to</th>
-                <th>Creation Date</th>
-                <th>Description</th>
-                <th></th>
-                <th></th>
-            </tr>
-            {% for vulnerability in vulnerabilities %}
-            <tr>
-                <td>
-                    {{vulnerability.vul_no}}
-                </td>
-                <td>
-                    {{vulnerability.status}}
-                </td>
-                <td>
-                    {{vulnerability.assigned_to}}
-                </td>
-                <td>
-                    {{vulnerability.date_created}}
-                </td>
-                <td>
-                    {{vulnerability.description}}
-                </td>
-                <td>
-                    <a href="{% url 'Update' vulnerability.pk %}">More Info/ Update</a>
-                </td>
-                <td>
-                    <a href= "{% url 'Delete' vulnerability.pk %}">Delete</a>
-                </td>
-            </tr>           
-            {% endfor %}
-        </div>
-            <div>
-            <h3>
-                <a href="{% url 'AddNew' %}">Add New Vulnerability</a>
-            <h3>    
-                <form action="{% url 'searchresults' %}" class="form-inline" method="get">
-                    <label for="" class="sr-only">Search Department or Status</label>
-                    <input name="search" type="" class="form-control" id="" placeholder="Status or Department">
-                    <button type="submit" class="btn btn-success btn-lg mb-2">Search</button>
-                </form>
-                <form action="{% url 'searchreference' %}" class="form-inline" method="get">
-                    <label for="" class="sr-only">Reference number</label>
-                    <input name="search" type="" class="form-control" id="" placeholder="Reference Number">
-                    <button type="submit" class="btn btn-success btn-lg mb-2">Search</button>
-                </form>
+    </div>
+</nav>
+{% endblock %}
+
+{%  block content %}
+<div class="container py-4 py-xl-5">
+    <div class="pad-text">
+        <div class="row align-items">
+            <div class="col">
+                <div class="text-center d-flex flex-column justify-content-center align-items-center py-3">
+                <div class="bs-icon-xl bs-icon-circle bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-2 bs-icon lg"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-calendar-event">
+                    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"></path>
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
+                </svg></div>
+                <div class="px-3">
+                    <h2 class="fw-bold mb-0">{{countAA}}</h2>
+                    <p class="mb-0">Awaiting Approval</p>
+                    <a class="btn btn-outline-primary" style="margin-top: 5px;" href="{% url 'Awaiting' %}" role="button">View</a>
+                </div>
+                </div>
             </div>
-        </body>
-</html>
+            <div class="col align-self-center">
+                <div><label for="" class="sr-only">Search for Vulnerabilities</label>
+                    <div>
+                        <form action="{% url 'searchresults' %}" class="form-inline" method="get">
+                        <input name="search" type="" class="form-control" id="" placeholder="Department, Status or Reference Number">
+                    </div> 
+                    <div> 
+                        <button class="btn btn-outline-success" type="submit" style="margin-top: 10px;">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+<section class="py-4 py-xl-5">
+ 
+        <div class="bg-light border rounded border-0 border-light d-flex flex-column justify-content-between flex-lg-row p-4 p-md-5">
+            <div class="pb-2 pb-lg-1">
+                <h2 class="fw-bold mb-2">Add New Vulnerabilities</h2>
+                <p class="mb-0">Click the button to create a new vulnerability record</p>
+            </div>
+            <div class="my-2"><a class="btn btn-warning fs-5 py-2 px-4" role="button" href="{% url 'AddNew' %}">Click here</a></div>
+        </div>
+    
+</section>
+<div class="py-4 pad-text">
+    <div class="p-5 border">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 5rem;">Reference</th>
+                                <th scope="col" style="width: 18rem;">Status</th>
+                                <th scope="col" style="width: 18rem;">Assigned to</th>
+                                <th scope="col" style="width: 20rem;">Creation Date</th>
+                                <th scope="col" style="width: 20rem;">Description</th>
+                                <th style="width: 10rem;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for vulnerability in vulnerabilities %}
+                            <tr>
+                                <td>{{vulnerability.vul_no}}</td>
+                                <td>{{vulnerability.status}}</td>
+                                <td>{{vulnerability.assigned_to}}</td>
+                                <td>{{vulnerability.date_created}}</td>
+                                <td>{{vulnerability.description}}</td>
+                                <td><a style="background-color:#264b5d; text-align:center;color: white;" class="btn btn-light" href="{% url 'vulnerability' vulnerability.vul_no %}" role="button">More details</a></td>
+                            </tr>           
+                        {% endfor %}        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

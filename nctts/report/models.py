@@ -11,6 +11,8 @@ class PublicUser(models.Model):
     email = models.EmailField(max_length=100, default="No email")
     remarks = models.TextField(blank=True, max_length=1000)
 
+    def __str__(self):
+        return self.first_name
 
 class Vulnerabilities(models.Model):
     """A table to store the vulnerability data reported by the user."""
