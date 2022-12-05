@@ -21,7 +21,7 @@ This application will provide an interface for the general public to submit vuln
 
 There are two ways to test the software.
 
-**1. Use the software from the cloud**
+######1. Use the software from the cloud**
    1. Visit and try out the website at https://www.nctts-essex.com
    2. Click on Login.
    3. Login using the admin credentials.
@@ -31,7 +31,7 @@ There are two ways to test the software.
    7. Click on save and logout.
    8. Click on login and enter the operator user credentials.
 
-**2. Run the software locally**
+######2. Run the software locally
     1. Install the latest version of Python. As of writing this document is is 3.11
        1. https://www.python.org/downloads/ 
     2. Install the latest version of Django. As of writing this document it is 4.1.3
