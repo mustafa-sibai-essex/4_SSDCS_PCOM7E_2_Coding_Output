@@ -1,5 +1,4 @@
 from django.forms import ModelForm
-from django import forms
 from report.models import Vulnerabilities
 
 class DateTimeInput(forms.DateTimeInput):

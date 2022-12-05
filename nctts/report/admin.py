@@ -1,3 +1,5 @@
+"""We register our models here so that we can see and manage them on the admin backend."""
+
 from django.contrib import admin
 from . import models
 

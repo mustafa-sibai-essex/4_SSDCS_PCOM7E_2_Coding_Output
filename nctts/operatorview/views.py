@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from nctts.sendEmail import SendEmail
 from report.models import *
