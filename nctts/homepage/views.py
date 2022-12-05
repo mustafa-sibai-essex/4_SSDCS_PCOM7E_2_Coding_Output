@@ -9,8 +9,9 @@ from .models import Account
 class HomeView(TemplateView):
     template_name = "homepage/home.html"
 
-
 def get_ip_address(request):
+    """Returns the client IP address when they make a request"""
+
     x_forwarded_for = request.META.get("HTTP_X_REAL_IP")
     if x_forwarded_for:
         ip = x_forwarded_for.split(",")[-1].strip()
@@ -20,10 +21,9 @@ def get_ip_address(request):
         ip = request.META.get("REMOTE_ADDR")
     return ip
 
-
 def login_user(request):
+    """Allow the user to login with their username and password. If the user is an admin they will be directed to the admin page. If the user is an operator they will be directed to the operator page."""
 
-    print(get_ip_address(request))
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
@@ -60,8 +60,10 @@ def login_user(request):
 
 
 def login_success(request):
+    """Returns a success login page"""
     return render(request, "authenticate/login_success.html")
 
 
 def login_failed(request):
+    """Returns a failed login page"""
     return render(request, "authenticate/login_failed.html")

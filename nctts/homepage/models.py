@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 
 
 class Account(models.Model):
+    """Extends the User model to add an IP address"""
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     ip_addresses = models.CharField(max_length=60)
 
