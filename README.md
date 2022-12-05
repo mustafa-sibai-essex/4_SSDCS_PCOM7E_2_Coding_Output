@@ -49,8 +49,8 @@ There are two ways to test the software.
      9. Click on Add users.
      10. Enter the user username, password, and add the loopback IP address which is 127.0.0.1
          **1. Note: it is important you add the loopback IP address otherwise you will not be able to log into the operator page. The loopback IP address is only used in the development server. In the production server the user public IP address must be used instead.**
-    11. Click on save and logout.
-    12. Click on login and enter the operator user credentials.
+     11. Click on save and logout.
+     12. Click on login and enter the operator user credentials.
 
 
 ## Authors
